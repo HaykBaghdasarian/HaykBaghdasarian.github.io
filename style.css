@@ -1,0 +1,40 @@
+body { margin:0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; height: 100%;}
+/* #menu {
+  height: 100%;
+  width: 10%;
+  position: absolute;
+  background: aqua;
+  padding: 5%;
+  font-family: 'Open Sans', sans-serif;
+  } */
+
+  .container {
+    margin-left: 5%;
+    margin-right: 5%;
+    bottom: 0%;
+    display: flex;    
+    overflow-x: auto;
+    position: absolute;
+    border-radius: 30%;
+
+  
+  }
+img{
+
+  background-color: white;
+  border-radius: 100%;
+    margin: 2.5%;
+    width: 20%;
+    height: 20%;
+  }
+  
+
+
+
+
+
+
+
+
+  
