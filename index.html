@@ -40,7 +40,29 @@ var map = new mapboxgl.Map({
 </script>
 
 
-        
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBfAHQP91XPr8OjuBVdaVPy9J_LTvaVOzg",
+    authDomain: "stepmap-8f656.firebaseapp.com",
+    databaseURL: "https://stepmap-8f656.firebaseio.com",
+    projectId: "stepmap-8f656",
+    storageBucket: "stepmap-8f656.appspot.com",
+    messagingSenderId: "512948044909",
+    appId: "1:512948044909:web:18247b67d581f19004eb64",
+    measurementId: "G-S831JVT44X"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
     </body>
     <script src='function.js'></script>
 </html>
