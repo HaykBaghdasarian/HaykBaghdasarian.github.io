@@ -28,8 +28,14 @@ body { margin:0; }
   }
 
 
+.mapboxgl-ctrl-logo {
+  display: none !important;
+}
 
-  
+
+a{
+  display: none !important;
+}
 
 
 
