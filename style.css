@@ -20,13 +20,17 @@ body { margin:0; }
     border-radius: 30%;
 
   
+  
   }
-
-.Icons{
+  .Icons{
     margin: 2.5%;
     width: 20%;
     height: 20%;
   }
+img:not(.Icons){
+  display: none !important;
+}
+
 
 
 .mapboxgl-ctrl-logo {
