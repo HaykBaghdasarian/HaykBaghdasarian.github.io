@@ -1,6 +1,13 @@
 console.log("asdasddsa");
 
-
+map.addControl(
+new mapboxgl.GeolocateControl({
+positionOptions: {
+enableHighAccuracy: true
+},
+trackUserLocation: true
+})
+);
 
 var marker = new mapboxgl.Marker()
 .setLngLat([44.5152, 40.1872])
