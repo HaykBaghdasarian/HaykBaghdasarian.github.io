@@ -12,16 +12,6 @@
 
 <div id='map'></div>
 
-<div class="container">
-    <img class="Icons" src="Burger.png">
-    <img class="Icons" src="Joystick.png" >
-    <img class="Icons" src="Benzin.png" >
-    <img class="Icons" src="Cafe.png" >
-    <img class="Icons" src="Bank.png" >
-    <img class="Icons" src="Gym.png" >
-    <img class="Icons" src="Pharmacy.png" >
-    <img class="Icons" src="Shop.png" >
-</div>
 
 
 
@@ -32,7 +22,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaGF5a2JhZ2hkYXNhcnlhbiIsImEiOiJja2N4aWl4encwM
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v10', // stylesheet location
-    center: [ 46.7656, 39.8265], // starting position [lng, lat]
+    center: [44.5152, 40.1872], // starting position [lng, lat]
     zoom: 13 // starting zoom
 });
 
@@ -40,29 +30,9 @@ var map = new mapboxgl.Map({
 </script>
 
 
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
 
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyBfAHQP91XPr8OjuBVdaVPy9J_LTvaVOzg",
-    authDomain: "stepmap-8f656.firebaseapp.com",
-    databaseURL: "https://stepmap-8f656.firebaseio.com",
-    projectId: "stepmap-8f656",
-    storageBucket: "stepmap-8f656.appspot.com",
-    messagingSenderId: "512948044909",
-    appId: "1:512948044909:web:18247b67d581f19004eb64",
-    measurementId: "G-S831JVT44X"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-</script>
+
     </body>
-    <script src='function.js'></script>
+    <script src='function_Auto.js'></script>
 </html>
