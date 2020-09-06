@@ -1,7 +1,9 @@
-console.log("asdasddsa");
 
-alert("asdasdasd");
 
+function change_image(id){
+   console.log(id);
+   document.getElementById(id).src = "https://haykbaghdasarian.github.io/" + id + "_clicked.png";
+}
 
 
 // var layerList = document.getElementById('menu');
