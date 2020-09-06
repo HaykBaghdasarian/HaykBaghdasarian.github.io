@@ -1,10 +1,13 @@
 
 
 function change_image(id){
-   console.log(id);
-   document.getElementById(id).src = "https://haykbaghdasarian.github.io/" + id + "_clicked.png";
-}
 
+    if(document.getElementById(id).src == "https://haykbaghdasarian.github.io/" + id + ".png"){
+   document.getElementById(id).src = "https://haykbaghdasarian.github.io/" + id + "_clicked.png";
+}else {
+    document.getElementById(id).src = "https://haykbaghdasarian.github.io/" + id + ".png";
+}
+}
 
 // var layerList = document.getElementById('menu');
 // var inputs = layerList.getElementsByTagName('input');
