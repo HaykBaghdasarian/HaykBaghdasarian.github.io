@@ -1,5 +1,5 @@
 body { margin:0; }
-#map { position: absolute; top: 0; bottom: 0; width: 100%; height: 100%}
+#map { position: absolute; top: 0; bottom: 0; width: 100%; height: 100%;}
 /* #menu {
   height: 100%;
   width: 10%;
@@ -18,16 +18,15 @@ body { margin:0; }
     overflow-x: auto;
     position: absolute;
     border-radius: 30%;
-
-  
-  
   }
+
   .Icons{
     margin: 2.5%;
     width: 20%;
-/*     height: 20%; */
+    height: 20%;
   }
-img:not(.Icons){
+
+img:not(.Icons, .menu){
   display: none !important;
 }
 
@@ -43,10 +42,3 @@ a{
 }
 
 
-
-
-
-
-
-
-  
