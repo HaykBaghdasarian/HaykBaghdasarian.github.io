@@ -1,5 +1,7 @@
 console.log("asdasddsa");
 
+alert("asdasdasd");
+
 
 
 // var layerList = document.getElementById('menu');
