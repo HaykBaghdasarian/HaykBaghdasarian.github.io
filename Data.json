@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "name": "arcax",
+        "type": "pharmacy",
+        "latitude": "39.821173",
+        "longitude": "46.758769",
+        "workinghours": "12:00-18:00",
+        "image": "https://icons-for-free.com/iconfiles/png/512/creative+idea+energy+idea+icon-1320162569448680313.png"
+    },
+    {
+        "id": 2,
+        "name": "stepanakert",
+        "type": "pharmacy",
+        "latitude": "39.826646",
+        "longitude": "46.753794",
+        "workinghours": "12:00-18:00",
+        "image": "https://icons-for-free.com/iconfiles/png/512/creative+idea+energy+idea+icon-1320162569448680313.png"
+    },
+    {
+        "id": 3,
+        "name": "martuni",
+        "type": "pharmacy",
+        "latitude": "39.818305",
+        "longitude": "46.749150",
+        "workinghours": "12:00-18:00",
+        "image": "https://icons-for-free.com/iconfiles/png/512/creative+idea+energy+idea+icon-1320162569448680313.png"
+    },
+    {
+        "id": 4,
+        "name": "karabax",
+        "type": "pharmacy",
+        "latitude": "39.826417",
+        "longitude": "46.765766",
+        "workinghours": "12:00-18:00",
+        "image": "https://icons-for-free.com/iconfiles/png/512/creative+idea+energy+idea+icon-1320162569448680313.png"
+    }
+]
