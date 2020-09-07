@@ -23,7 +23,7 @@ body { margin:0; }
   .Icons{
     margin: 2.5%;
     width: 20%;
-    height: 20%;
+    height: auto;
   }
 
 img:not(.Icons, .menu){
