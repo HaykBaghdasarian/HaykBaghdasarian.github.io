@@ -1,5 +1,5 @@
 body { margin:0; }
-#map { position: absolute; top: 0; bottom: 0; width: 100vw; height: 100vh;}
+#map { z-index: -1; position: absolute; top: 0; bottom: 0; width: 100vw; height: 100vh;}
 /* #menu {
   height: 100%;
   width: 10%;
@@ -61,4 +61,56 @@ a{
   height: auto;
   margin: 5%;
 
+}
+
+
+.bottom1{
+  align-content: center;
+  z-index: 23;
+  background: rgb(45,46,61);
+background: linear-gradient(0deg, rgba(45,46,61,1) 0%, rgba(70,74,107,1) 100%);
+border-top-right-radius: 10%;
+border-top-left-radius: 10%;
+  position: fixed;
+  bottom: 0;
+  
+  width: 100%;
+
+
+  display: flex;
+  flex-flow: column nowrap;
+
+  align-items: center; /* aligns on horizontal for column */
+
+
+}
+.imgmgmg{
+  border-radius: 100%;
+  
+  border-style: solid;
+  border-color: white;
+
+  width: 20%;
+
+  margin-top: -10%;
+
+  
+}
+h1,p{
+  color: white;
+   
+
+  margin-block-start: 3%;
+  margin-block-end: 3%;
+
+  font-size: 350%;
+}
+
+.getdirection{
+  
+  background-color: turquoise;
+  width: 90%;
+  bottom: 0%;
+  margin-bottom: 5%;
+  margin-top: 10%;
 }
