@@ -108,6 +108,8 @@ h1,p{
 
 .getdirection{
   
+  border-radius: 20px;
+  
   background-color: turquoise;
   width: 90%;
   bottom: 0%;
