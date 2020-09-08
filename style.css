@@ -1,5 +1,5 @@
 body { margin:0; }
-#map { position: absolute; top: 0; bottom: 0; width: 100%; height: 100%;}
+#map { position: absolute; top: 0; bottom: 0; width: 100vw; height: 100vh;}
 /* #menu {
   height: 100%;
   width: 10%;
@@ -23,12 +23,12 @@ body { margin:0; }
   .Icons{
     margin: 2.5%;
     width: 20%;
-    height: auto;
+    height: 20%;
   }
 
-img:not(.Icons, .menu){
+/* img:not(.Icons, .menu){
   display: none !important;
-}
+} */
 
 
 
@@ -36,9 +36,29 @@ img:not(.Icons, .menu){
   display: none !important;
 }
 
+.mapboxgl-ctrl-attrib.mapboxgl-compact:after {
+  display: none !important;}
 
 a{
   display: none !important;
 }
 
+.left {
+  position: fixed;
+  top: auto;
+  left: 0;
+  width: 15%;
+  height: auto;
+  margin: 5%;
 
+}
+
+.right {
+  position: fixed;
+  top: auto;
+  right: 0;
+  width: 15%;
+  height: auto;
+  margin: 5%;
+
+}
