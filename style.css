@@ -97,6 +97,9 @@ border-top-left-radius: 10%;
   
 }
 h1,p{
+  
+  font-family: 'Fredoka One', cursive;
+  
   color: white;
    
 
@@ -107,6 +110,8 @@ h1,p{
 }
 
 .getdirection{
+  
+  font-family: 'Fredoka One', cursive;
   
   border-radius: 30px;
   
