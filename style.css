@@ -112,11 +112,37 @@ h1,p{
   border-radius: 20px;
   
   background-color: turquoise;
-  width: 90%;
+  width: 60%;
   bottom: 0%;
+
   margin-bottom: 5%;
   margin-top: 10%;
+
 }
+
+.close{
+
+
+
+  border-style: none;
+  border-radius: 20px;
+  
+  background-color:#eb4034;
+  width: 30%;
+  bottom: 0%;
+  margin-bottom: 5%;
+
+  margin-top: 10%;
+}
+
+
+.bottomcont{
+  display: flex;width: 100vw;justify-content: space-around;
+}
+
+
 :focus{
+  
   outline: none;
+  
 }
