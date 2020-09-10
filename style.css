@@ -112,7 +112,7 @@ h1,p{
   border-radius: 20px;
   
   background-color: turquoise;
-  width: 60%;
+  width: 50%;
   bottom: 0%;
 
   margin-bottom: 5%;
@@ -128,16 +128,17 @@ h1,p{
   border-radius: 20px;
   
   background-color:#eb4034;
-  width: 30%;
+  width: 20%;
   bottom: 0%;
   margin-bottom: 5%;
 
   margin-top: 10%;
+  
 }
 
 
 .bottomcont{
-  display: flex;width: 100vw;justify-content: space-around;
+  display: flex;width: 100vw;justify-content: space-evenly;
 }
 
 
