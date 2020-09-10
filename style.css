@@ -68,7 +68,7 @@ a{
   align-content: center;
   z-index: 23;
   background: #28293b;
-/* background: linear-gradient(0deg, rgba(45,46,61,1) 0%, rgba(70,74,107,1) 100%); */
+background: linear-gradient(0deg, rgba(45,46,61,1) 0%, rgba(70,74,107,1) 100%);
 border-top-right-radius: 10%;
 border-top-left-radius: 10%;
   position: fixed;
@@ -112,7 +112,7 @@ h1,p, h2{
   border-style: none;
   border-radius: 100px;
   
-  background-color: #01cd98;
+  background-color: turquoise;
   width: 80%;
   bottom: 0%;
 
