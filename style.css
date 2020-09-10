@@ -88,6 +88,7 @@ border-top-left-radius: 10%;
   border-radius: 100%;
   
   border-style: solid;
+  border-width: 12px;
   border-color: white;
 
   width: 20%;
@@ -109,37 +110,22 @@ h1,p, h2{
 .getdirection{
   
   border-style: none;
-  border-radius: 20px;
+  border-radius: 100px;
   
   background-color: turquoise;
-  width: 50%;
+  width: 80%;
   bottom: 0%;
 
   margin-bottom: 5%;
   margin-top: 10%;
+  padding: 2%;
 
 }
 
-.close{
 
 
 
-  border-style: none;
-  border-radius: 20px;
-  
-  background-color:#eb4034;
-  width: 20%;
-  bottom: 0%;
-  margin-bottom: 5%;
 
-  margin-top: 10%;
-  
-}
-
-
-.bottomcont{
-  display: flex;width: 100vw;justify-content: space-evenly;
-}
 
 
 :focus{
