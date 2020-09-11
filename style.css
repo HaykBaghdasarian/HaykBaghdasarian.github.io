@@ -21,9 +21,9 @@ body { z-index: -2; margin:0; }
   }
 
   .Icons{
-    margin: 2.5%;
-    width: 30%;
-    height: 30%;
+    margin: 0%;
+    width: 25%;
+    height: 25%;
   }
 
 /* img:not(.Icons, .menu){
