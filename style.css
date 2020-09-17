@@ -138,8 +138,8 @@ h1,p, h2{
 div .Pharmacy_marker {
   background-image: url('https://haykbaghdasarian.github.io/pharmacy.jpg');
   background-size: cover;
-  width: 2cm;
-  height: 2cm;
+  width: 1cm;
+  height: 1cm;
   border-radius: 50%;
   cursor: pointer;
   }
@@ -147,8 +147,8 @@ div .Pharmacy_marker {
   div .Burger_marker {
     background-image: url('https://i.pinimg.com/564x/25/40/5e/25405e98120bb53d432ac04e1415dca0.jpg');
     background-size: cover;
-    width: 2cm;
-    height: 2cm;
+    width: 1cm;
+    height: 1cm;
     border-radius: 50%;
     cursor: pointer;
     }
