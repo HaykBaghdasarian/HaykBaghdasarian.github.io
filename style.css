@@ -152,3 +152,12 @@ div .Pharmacy_marker {
     border-radius: 50%;
     cursor: pointer;
     }
+
+    div .Joystick_marker {
+      background-image: url('https://i.pinimg.com/564x/bd/be/66/bdbe6652ac1fa6d248bfb601c5d92f31.jpg');
+      background-size: cover;
+      width: 1cm;
+      height: 1cm;
+      border-radius: 50%;
+      cursor: pointer;
+      }

@@ -1,6 +1,6 @@
 
 
-fetch("https://haykbaghdasarian.github.io/Data.json")
+fetch("http://localhost/design/Data.json")
 .then(response => response.json())
 .then(data => {
 
@@ -10,7 +10,17 @@ fetch("https://haykbaghdasarian.github.io/Data.json")
         el.className = data.type + '_marker';
         el.id = data.id;
         el.onclick = function () {
-            alert(data.id);
+            // alert(data.id + " , " + data.name + " , " +  data.type);
+
+            map.flyTo({
+                center: [data.longitude , data.latitude],
+                zoom: 18,
+                speed: 0.5,
+                curve: 3
+                });
+
+            
+            
         };
         
                 
