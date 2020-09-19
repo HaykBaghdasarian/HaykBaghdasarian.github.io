@@ -142,6 +142,7 @@ div .Pharmacy_marker {
   height: 1cm;
   border-radius: 50%;
   cursor: pointer;
+  display: none;
   }
 
   div .Burger_marker {
@@ -151,6 +152,7 @@ div .Pharmacy_marker {
     height: 1cm;
     border-radius: 50%;
     cursor: pointer;
+    display: none;
     }
 
     div .Joystick_marker {
@@ -160,4 +162,5 @@ div .Pharmacy_marker {
       height: 1cm;
       border-radius: 50%;
       cursor: pointer;
+      display: none;
       }

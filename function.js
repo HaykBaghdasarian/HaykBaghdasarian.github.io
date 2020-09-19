@@ -1,6 +1,6 @@
 
 
-fetch("https://haykbaghdasarian.github.io/Data.json")
+fetch("http://localhost/design/Data.json")
 .then(response => response.json())
 .then(data => {
 
@@ -44,12 +44,26 @@ function change_image(id){
    document.getElementById(id).src = "https://haykbaghdasarian.github.io/" + id + "_clicked.png";
 
 
+    
+   var x = document.getElementsByClassName(id + "_marker");
+   for(i = 0; i < x.length; i++){
+   x[i].style.display = "block";
+   }
+
+
+
+
 
 
 
 
 }else {
     document.getElementById(id).src = "https://haykbaghdasarian.github.io/" + id + ".png";
+
+    var x = document.getElementsByClassName(id + "_marker");
+    for(i = 0; i < x.length; i++){
+    x[i].style.display = "none";
+    }
 
 
 
