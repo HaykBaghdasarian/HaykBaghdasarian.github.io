@@ -1,6 +1,6 @@
 
 
-fetch("http://localhost/design/Data.json")
+fetch("https://haykbaghdasarian.github.io/Data.json")
 .then(response => response.json())
 .then(data => {
 
