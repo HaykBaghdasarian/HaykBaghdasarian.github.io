@@ -19,9 +19,21 @@ fetch("https://haykbaghdasarian.github.io/Data.json")
                 curve: 3
                 });
 
-            
+                document.getElementById("panel_name").innerHTML = data.name;
+
+                document.getElementById("panel_wtime").innerHTML = "Working Time: " + data.workinghours;
+
+                
+
+
+
+                
+
+            document.getElementById("panel").style.display = "flex";
             
         };
+
+        
         
                 
         new mapboxgl.Marker(el)
