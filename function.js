@@ -83,3 +83,8 @@ function change_image(id){
 }
 }
 
+
+
+function changelink() {
+    location.replace("https://haykbaghdasarian.github.io/form.html")
+  }

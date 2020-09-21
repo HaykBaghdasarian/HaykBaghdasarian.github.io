@@ -1,6 +1,227 @@
 <html>
-    <head></head>
+    <head>
+        <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+    </head>
     <body>
-        <h1>asdasdadsasddsa</h1>
+        <style>
+body { z-index: -2; margin:0; font-family: 'Josefin Sans', sans-serif;}
+#map { position: absolute; top: 0; bottom: 0; width: 100vw; height: 100vh;}
+#panel_up{
+  align-content: center;
+  z-index: 23;
+
+background:none;
+border-bottom-right-radius: 34px;
+border-bottom-left-radius: 34px;
+background-color: rgb(246, 246, 244 ,0.5);
+  position: fixed;
+  top: 0;
+  
+  width: 100%;
+
+  display: flex;
+  flex-flow: column nowrap;
+
+  align-items: center; /* aligns on horizontal for column */
+
+
+}
+
+:focus{
+  
+  outline: none;
+  
+}
+
+
+#name,select{
+  margin-top:1%;
+  background-color: rgb(79, 79, 255);
+  border: none;
+  border-radius: 10px;
+  
+  color: white;
+  /* width: 90vw; */
+  height: 3vh;
+  font-family: 'Josefin Sans', sans-serif;
+
+  width: 70vw;
+  
+
+
+
+
+}
+.submitasd{
+    z-index: 23;
+    position: fixed;
+    bottom: 0%;
+    margin: 5vw;
+    width: 100vw;
+
+
+}
+button {
+    width: 90vw;
+    border-style: none;
+  border-radius: 100px;
+  color: white;
+  background-color: rgb(79, 79, 255);
+
+}
+.mapboxgl-ctrl-logo {
+  display: none !important;
+}
+
+.mapboxgl-ctrl-attrib.mapboxgl-compact:after {
+  display: none !important;}
+
+a{
+  display: none !important;
+}
+
+form{
+    margin-top: 3vh;
+    width: 90vw;
+    display: flex;
+  flex-flow: column nowrap;
+
+  align-items: center; /* aligns on horizontal for column */
+}
+#workhourfrom{
+    width: 70vw;
+  margin-top:1%;
+  background-color: rgb(79, 79, 255);
+  border: none;
+  border-radius: 10px;
+  
+  left: 0%;
+  color: white;
+
+  height: 3vh;
+  font-family: 'Josefin Sans', sans-serif;
+  
+}
+#workhourto{
+    width: 70vw;
+  margin-top:1%;
+  background-color: rgb(79, 79, 255);
+  border: none;
+  border-radius: 10px;
+  right: 0%;
+  color: white;
+
+  height: 3vh;
+  font-family: 'Josefin Sans', sans-serif;
+  
+}
+.coordinates {
+background: rgba(79, 79, 255);
+
+color: #fff;
+/* position: absolute; */
+/* bottom: 50%;
+left: 10px; */
+padding: 5px 10px;
+margin-top: 3vh;
+font-size: 11px;
+line-height: 18px;
+border-radius: 3px;
+display: none;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: white;
+  font-family: 'Josefin Sans', sans-serif;
+
+
+  
+}
+
+
+
+
+
+
+        </style>
+        <div id="panel_up">
+
+            <form >
+                <label  for="email"><b>Name</b></label> 
+                <input id="name" placeholder=" Name" type = "text" name = "first_name" />
+                <br>
+                <label for="email"><b>Working From</b></label> 
+                <input id="workhourfrom" placeholder=" Working Hours" type = "time" name = "last_name" />
+                <br>
+                <label for="email"><b>Working to</b></label>
+                <input id="workhourto" placeholder=" Working Hours" type = "time" name = "last_name" />
+                <br>
+                <label for="email"><b>Select Type</b></label>
+                <select id="name" name="country">
+                    <option value="australia"> <p>Australia</p> </option>
+                    <option value="canada">Canada</option>
+                    <option value="usa">USA</option>
+                  </select>
+    
+                  <pre id="coordinates" class="coordinates"></pre>
+             </form>
+        </div> <div class="submitasd">
+            <button><h1>Submit</h1></button>
+        </div>
+
+        <div id='map'></div>
+        
+
+        
+
+        
+
+        <script>
+
+            mapboxgl.accessToken = 'pk.eyJ1IjoiaGF5a2JhZ2hkYXNhcnlhbiIsImEiOiJja2N4aWl4encwMGR2MnZsYWhqZmZwbmFqIn0.TqqvzhGk3yJQlWzFeH2rqA';
+            var map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/light-v10', // stylesheet location
+                center: [ 46.7656, 39.8265], // starting position [lng, lat]
+                zoom: 13 // starting zoom
+            });
+
+            var marker = new mapboxgl.Marker({
+
+draggable: true,
+color: "rgb(79,79,255)"
+})
+.setLngLat([ 46.7656, 39.8265])
+.addTo(map);
+
+ 
+function onDragEnd() {
+var lngLat = marker.getLngLat();
+coordinates.style.display = 'block';
+coordinates.innerHTML =
+'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
+}
+ 
+marker.on('dragend', onDragEnd);
+            
+            
+            </script>
+
+
     </body>
 </html>
