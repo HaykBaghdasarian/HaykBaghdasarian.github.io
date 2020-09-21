@@ -105,6 +105,41 @@ border-bottom-left-radius: 10%;
 
 
 }
+
+input,select{
+  margin:5%;
+  background-color: rgb(79, 79, 255);
+  border: none;
+  border-radius: 34px;
+  width: 100%;
+  color: white;
+  font-family: 'Josefin Sans', sans-serif;
+  
+  
+
+
+
+
+}
+
+
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: white;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
 .imgmgmg{
   border-radius: 100%;
   
