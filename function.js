@@ -10,7 +10,7 @@ fetch("https://haykbaghdasarian.github.io/Data.json")
         el.className = data.type + '_marker';
         el.id = data.id;
         el.onclick = function () {
-            // alert(data.id + " , " + data.name + " , " +  data.type);
+            
 
             map.flyTo({
                 center: [data.longitude , data.latitude],
@@ -19,17 +19,8 @@ fetch("https://haykbaghdasarian.github.io/Data.json")
                 curve: 3
                 });
 
-                document.getElementById("panel_name").innerHTML = data.name;
 
-                document.getElementById("panel_wtime").innerHTML = "Working Time: " + data.workinghours;
-
-                
-
-
-
-                
-
-            document.getElementById("panel").style.display = "flex";
+            
             
         };
 
@@ -51,9 +42,9 @@ function change_image(id){
 
     
 
-  if(document.getElementById(id).src == "https://haykbaghdasarian.github.io/" + id + ".png"){
+  if(document.getElementById(id).src == "file:///C:/Users/User/Desktop/HaykBaghdasarian.github.io-master/" + id + ".png"){
 
-   document.getElementById(id).src = "https://haykbaghdasarian.github.io/" + id + "_clicked.png";
+   document.getElementById(id).src = "file:///C:/Users/User/Desktop/HaykBaghdasarian.github.io-master/" + id + "_clicked.png";
 
 
     
@@ -70,7 +61,7 @@ function change_image(id){
 
 
 }else {
-    document.getElementById(id).src = "https://haykbaghdasarian.github.io/" + id + ".png";
+    document.getElementById(id).src = "file:///C:/Users/User/Desktop/HaykBaghdasarian.github.io-master/" + id + ".png";
 
     var x = document.getElementsByClassName(id + "_marker");
     for(i = 0; i < x.length; i++){

@@ -14,32 +14,21 @@
 
 <div class="UI">
 
-    <!-- <img id="Menu" src="https://haykbaghdasarian.github.io/Menu.png" class="left" onclick="change_image('Menu')">
 
-    <img id="Locate" src="https://haykbaghdasarian.github.io/Locate.png" class="right" onclick="change_image('Locate')"> -->
-
-    
-
-    <div id="panel">
-        <img id="panel_image" src="https://image.freepik.com/free-vector/tablet-capsule-medicine-icon-illustration-healthcare-medical-icon-concept-isolated_138676-882.jpg" class="imgmgmg" alt="">
-        <h1 id="panel_name" >Pharmacy</h1>
-        <p  id="panel_wtime" >Working Time: 14:00-18:00</p>
-        <p id="panel_distance">Distance: 750m From You</p>
-        <button class="getdirection"><h1>Get Direction</h1></button>
-    </div> 
 
 
 
 <div class="container">
-    <img class="Icons" id="Burger" src="https://haykbaghdasarian.github.io/Burger.png" onclick="change_image('Burger')">
-    <img class="Icons" id = "Joystick" src="https://haykbaghdasarian.github.io/Joystick.png" onclick="change_image('Joystick')">
-    <img class="Icons" src="https://haykbaghdasarian.github.io/Benzin.png" id="Benzin" onclick="change_image('Benzin')">
-    <img class="Icons" src="https://haykbaghdasarian.github.io/Cafe.png" id="Cafe" onclick="change_image('Cafe')">
-    <img class="Icons" src="https://haykbaghdasarian.github.io/Bank.png" id="Bank" onclick="change_image('Bank')">
-    <img class="Icons" src="https://haykbaghdasarian.github.io/Gym.png" id="Gym" onclick="change_image('Gym')">
-    <img class="Icons" src="https://haykbaghdasarian.github.io/Pharmacy.png" id="Pharmacy" onclick="change_image('Pharmacy')">
-    <img class="Icons" src="https://haykbaghdasarian.github.io/Shop.png" id="Shop" onclick="change_image('Shop')">
-    <img class="Icons" src="https://haykbaghdasarian.github.io/Shop.png" id="Shop" onclick="changelink()">
+    <img class="Icons" id="Engine" src="Engine.png" onclick="change_image('Engine')">
+    <img class="Icons" id = "Carwash" src="Carwash.png" onclick="change_image('Carwash')">
+    <img class="Icons" src="Service.png" id="Service" onclick="change_image('Service')">
+    <img class="Icons" id="Engine" src="Engine.png" onclick="change_image('Engine')">
+    <img class="Icons" id = "Carwash" src="Carwash.png" onclick="change_image('Carwash')">
+    <img class="Icons" src="Service.png" id="Service" onclick="change_image('Service')">
+    <img class="Icons" id="Engine" src="Engine.png" onclick="change_image('Engine')">
+    <img class="Icons" id = "Carwash" src="Carwash.png" onclick="change_image('Carwash')">
+    <img class="Icons" src="Service.png" id="Service" onclick="change_image('Service')">
+
 </div>
 
 
@@ -54,7 +43,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaGF5a2JhZ2hkYXNhcnlhbiIsImEiOiJja2N4aWl4encwM
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v10', // stylesheet location
-    center: [ 46.7656, 39.8265], // starting position [lng, lat]
+    center: [44.5134383,40.1838161], // starting position [lng, lat]
     zoom: 13 // starting zoom
 });
 
@@ -62,29 +51,7 @@ var map = new mapboxgl.Map({
 </script>
 
 
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
-
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyBfAHQP91XPr8OjuBVdaVPy9J_LTvaVOzg",
-    authDomain: "stepmap-8f656.firebaseapp.com",
-    databaseURL: "https://stepmap-8f656.firebaseio.com",
-    projectId: "stepmap-8f656",
-    storageBucket: "stepmap-8f656.appspot.com",
-    messagingSenderId: "512948044909",
-    appId: "1:512948044909:web:18247b67d581f19004eb64",
-    measurementId: "G-S831JVT44X"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-</script>
     </body>
     <script src='function.js'></script>
 </html>
