@@ -42,9 +42,9 @@ function change_image(id){
 
     
 
-  if(document.getElementById(id).src == "file:///C:/Users/User/Desktop/HaykBaghdasarian.github.io-master/" + id + ".png"){
+  if(document.getElementById(id).src == "https://haykbaghdasarian.github.io/" + id + ".png"){
 
-   document.getElementById(id).src = "file:///C:/Users/User/Desktop/HaykBaghdasarian.github.io-master/" + id + "_clicked.png";
+   document.getElementById(id).src = "https://haykbaghdasarian.github.io/" + id + "_clicked.png";
 
 
     
