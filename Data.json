@@ -2,8 +2,8 @@
     {
         "id": 1,
         "type": "Carwash",
-        "latitude": "40.1841321",
-        "longitude": "44.5161839"
+        "latitude": "40.1841421",
+        "longitude": "44.5161739"
     },
     {
         "id": 2,
@@ -14,32 +14,32 @@
     {
         "id": 3,
         "type": "Carwash",
-        "latitude": "40.1841321",
-        "longitude": "44.5161850"
+        "latitude": "40.1841521",
+        "longitude": "44.5161750"
     },
     {
         "id": 4,
         "type": "Carwash",
-        "latitude": "40.1841321",
-        "longitude": "44.5161829"
+        "latitude": "40.1841421",
+        "longitude": "44.5161929"
     },
     {
         "id": 5,
         "type": "Carwash",
-        "latitude": "40.1841321",
-        "longitude": "44.5161822"
+        "latitude": "40.1841521",
+        "longitude": "44.5161622"
     },
     {
         "id": 6,
         "type": "Carwash",
-        "latitude": "40.1841321",
-        "longitude": "44.5161825"
+        "latitude": "40.1841121",
+        "longitude": "44.5161755"
     },
     {
         "id": 7,
         "type": "Carwash",
-        "latitude": "40.1841321",
-        "longitude": "44.5161820"
+        "latitude": "40.1841121",
+        "longitude": "44.5161520"
     }
     
 ]
