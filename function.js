@@ -61,7 +61,7 @@ function change_image(id){
 
 
 }else {
-    document.getElementById(id).src = "file:///C:/Users/User/Desktop/HaykBaghdasarian.github.io-master/" + id + ".png";
+    document.getElementById(id).src = "https://haykbaghdasarian.github.io/" + id + ".png";
 
     var x = document.getElementsByClassName(id + "_marker");
     for(i = 0; i < x.length; i++){
