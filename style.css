@@ -56,8 +56,24 @@ a{
 
 }
 
-
-
+#panel {
+  background: red;
+  height: 50vh;
+  position: absolute;
+  z-index: 200;
+  bottom: 0%;
+  border-top-left-radius: 10%;
+  border-top-right-radius: 10%;
+  width: 100%;
+  text-align: center;
+  display: none;
+}
+.swipline {
+  background: black;
+  height: 6px;
+  width: 157px;
+  margin: 1.7vh auto;
+}
 
 
 .imgmgmg{
@@ -85,12 +101,6 @@ h1,p, h2{
 
 
 
-
-
-
-
-
-
 :focus{
   
   outline: none;
@@ -99,7 +109,7 @@ h1,p, h2{
 
 
 div .Carwash_marker {
-  background-image: url('HaykBaghdasarian.github.io/carwash.png');
+  background-image: url('https://haykbaghdasarian.github.io/carwash.png');
   background-size: cover;
   width: 1cm;
   height: 1cm;

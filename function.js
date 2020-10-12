@@ -1,5 +1,3 @@
-
-
 fetch("https://haykbaghdasarian.github.io/Data.json")
 .then(response => response.json())
 .then(data => {
@@ -19,6 +17,8 @@ fetch("https://haykbaghdasarian.github.io/Data.json")
                 curve: 3
                 });
 
+                document.getElementById("panel").style.display = "block";
+
 
             
             
@@ -33,9 +33,6 @@ fetch("https://haykbaghdasarian.github.io/Data.json")
 
     });
 });
-
-
-
 
 
 function change_image(id){
@@ -55,11 +52,6 @@ function change_image(id){
 
 
 
-
-
-
-
-
 }else {
     document.getElementById(id).src = "https://haykbaghdasarian.github.io/" + id + ".png";
 
@@ -67,15 +59,11 @@ function change_image(id){
     for(i = 0; i < x.length; i++){
     x[i].style.display = "none";
     }
-
-
-
-    
 }
 }
+$(".Icons").click(function(){
+    $('#panel').css('display','none')
+  });
 
 
 
-function changelink() {
-    location.replace("https://haykbaghdasarian.github.io/form.html")
-  }
