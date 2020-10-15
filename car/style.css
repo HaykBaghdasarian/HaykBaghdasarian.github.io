@@ -1,0 +1,100 @@
+body { z-index: -2; margin:0; font-family: 'Josefin Sans', sans-serif;}
+#map { position: absolute; top: 0; bottom: 0; width: 100vw; height: 100vh;}
+
+
+  .container {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+    top: 0%;
+    display: flex;    
+    overflow-x: auto;
+    position: absolute;
+    border-radius: 30%;
+  }
+
+  .Icons{
+    margin: 2.5%;
+    width: 20%;
+    height: 20%;
+  }
+
+/* img:not(.Icons, .menu){
+  display: none !important;
+} */
+
+
+
+.mapboxgl-ctrl-logo {
+  display: none !important;
+}
+
+.mapboxgl-ctrl-attrib.mapboxgl-compact:after {
+  display: none !important;}
+
+a{
+  display: none !important;
+}
+
+.left {
+  position: fixed;
+  top: auto;
+  left: 0;
+  width: 15%;
+  height: auto;
+  margin: 5%;
+
+}
+
+.right {
+  position: fixed;
+  top: auto;
+  right: 0;
+  width: 15%;
+  height: auto;
+  margin: 5%;
+
+}
+.imgmgmg{
+  border-radius: 100%;
+  
+  border-style: solid;
+  border-width: 12px;
+  border-color: white;
+
+  width: 20%;
+
+  margin-top: -10%;
+
+  
+}
+h1,p, h2{
+  color: white;
+   
+
+  margin-block-start: 3%;
+  margin-block-end: 3%;
+
+  
+}
+
+
+
+:focus{
+  
+  outline: none;
+  
+}
+
+
+div .Carwash_marker {
+  background-image: url('https://haykbaghdasarian.github.io/carwash.png');
+  background-size: cover;
+  width: 1cm;
+  height: 1cm;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+  }
+
+}

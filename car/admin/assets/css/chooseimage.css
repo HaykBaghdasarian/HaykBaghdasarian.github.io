@@ -1,0 +1,9 @@
+.btn-sm {
+    font-size: 1.1rem !important;
+    border-radius: 3px;
+    padding: 0 !important;
+    border-color:#447df7 !important;
+}
+.inp1{
+    background: #447df7;
+}
