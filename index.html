@@ -1,60 +1,13 @@
 <html>
-    <head>
-        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
-        <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
-        <link href='style.css' rel='stylesheet' />
-    </head>
+    <head></head>
     <body>
-
-
-<div id='map'></div>
-
-<div class="UI">
-
-<div id="panel">
-    <div class='swipline'></div>
-    <h2 id="title">Car wash</h2>
-    <h3 id = "name">Name-Hamoi mot</h3>
-    <h4 id="workhours">Working hours-09<sup>00</sup></h4>
-    <h4 id="price">Price-1000</h4>
-    <h4 id ="phone">Phone number:094777777</h4>
-</div>
-
-
-
-<div class="container">
-    <img class="Icons" id="Engine" src="https://haykbaghdasarian.github.io/Engine.png" onclick="change_image('Engine')">
-    <img class="Icons" id = "Carwash" src="https://haykbaghdasarian.github.io/Carwash.png" onclick="change_image('Carwash')">
-    <img class="Icons" src="https://haykbaghdasarian.github.io/Service.png" id="Service" onclick="change_image('Service')">
-    <img class="Icons" id="Engine" src="https://haykbaghdasarian.github.io/Engine.png" onclick="change_image('Engine')">
-    <img class="Icons" id = "Carwash" src="https://haykbaghdasarian.github.io/Carwash.png" onclick="change_image('Carwash')">
-    <img class="Icons" src="https://haykbaghdasarian.github.io/Service.png" id="Service" onclick="change_image('Service')">
-    <img class="Icons" id="Engine" src="https://haykbaghdasarian.github.io/Engine.png" onclick="change_image('Engine')">
-    <img class="Icons" id = "Carwash" src="https://haykbaghdasarian.github.io/Carwash.png" onclick="change_image('Carwash')">
-    <img class="Icons" src="https://haykbaghdasarian.github.io/Service.png" id="Service" onclick="change_image('Service')">
-
-</div>
-
-
-</div>
-
-
--
-
-<script>
-
-mapboxgl.accessToken = 'pk.eyJ1IjoiaGF5a2JhZ2hkYXNhcnlhbiIsImEiOiJja2N4aWl4encwMGR2MnZsYWhqZmZwbmFqIn0.TqqvzhGk3yJQlWzFeH2rqA';
-var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/light-v10', // stylesheet location
-    center: [44.5134383,40.1838161], // starting position [lng, lat]
-    zoom: 13 // starting zoom
-});
-
-
-</script>
+        <form action="https://money.idram.am/payment.aspx" method="POST">       
+            <input type="hidden" name="EDP_LANGUAGE" value="EN">
+            <input type="hidden" name="EDP_REC_ACCOUNT" value="110000629">
+            <input type="hidden" name="EDP_DESCRIPTION" value="Order description">
+            <input type="hidden" name="EDP_AMOUNT" value="24">
+            <input type="hidden" name="EDP_BILL_NO" value="1806">
+            <input type="submit" value="submit">
+        </form>
     </body>
-    <script src='function.js'></script>
 </html>
