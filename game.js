@@ -209,13 +209,25 @@ scene("game", ({ level, score }) => {
     player.move(MOVE_SPEED, 0)
   })
 
+    var isright = false
+    var isleft = false
+
   player.action(() => {
     if(player.grounded()) {
       isJumping = false
     }
+      if (isright) {
+        player.move(MOVE_SPEED, 0)
+      }
+      if (isleft) {
+          player.move(-MOVE_SPEED, 0)
+      }
   })
-    document.getElementById("jump").addEventListener("click", jumpfunc);
+    document.getElementById("jump").addEventListener("mousedown", jumpfunc);
     document.getElementById("right").addEventListener("mousedown", rightfunc);
+    document.getElementById("right").addEventListener("mouseup", rightfunc1);
+    document.getElementById("left").addEventListener("mousedown", leftfunc);
+    document.getElementById("left").addEventListener("mouseup", leftfunc1);
 
     function jumpfunc() {
         if (player.grounded()) {
@@ -225,8 +237,17 @@ scene("game", ({ level, score }) => {
     }
 
     function rightfunc() {
-        player.move(MOVE_SPEED, 0)
-        rightfunc()
+        isright = true
+    }
+    function rightfunc1() {
+        isright = false
+    }
+
+    function leftfunc() {
+        isleft = true
+    }
+    function leftfunc1() {
+        isleft = false
     }
 
 })
