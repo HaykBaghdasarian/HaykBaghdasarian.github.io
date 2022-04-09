@@ -5,7 +5,7 @@ kaboom({
   fullscreen: true,
   scale: 4,
   debug: true,
-  clearColor: [0.2, 0.2, 0.2, 1],
+  clearColor: [0.3, 0.3, 0.4, 1],
 })
 
 // Speed identifiers
@@ -188,7 +188,7 @@ scene("game", ({ level, score }) => {
   player.action(() => {
     camPos(player.pos)
     if (player.pos.y >= FALL_DEATH) {
-      go('lose', { score: scoreLabel.value})
+        go('game', { level: 0, score: 0 })
     }
   })
 
@@ -201,8 +201,8 @@ scene("game", ({ level, score }) => {
     })
   })
 
-  keyDown('left', () => {
-    player.move(-MOVE_SPEED, 0)
+    keyDown('mouse', () => {
+        alert('asdasd')
   })
 
   keyDown('right', () => {
