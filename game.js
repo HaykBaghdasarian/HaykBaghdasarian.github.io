@@ -3,9 +3,9 @@
 kaboom({
   global: true,
   fullscreen: true,
-  scale: 2,
+  scale: 4,
   debug: true,
-  clearColor: [0, 0, 0, 1],
+  clearColor: [0.2, 0.2, 0.2, 1],
 })
 
 // Speed identifiers
@@ -25,7 +25,7 @@ loadSprite('coin', 'wbKxhcd.png')
 loadSprite('evil-shroom', 'KPO3fR9.png')
 loadSprite('brick', 'pogC9x5.png')
 loadSprite('block', 'M6rwarW.png')
-loadSprite('mario', 'Wb1qfhK.png')
+loadSprite('mario', 'GbRp6Ij.png')
 loadSprite('mushroom', '0wMd92p.png')
 loadSprite('surprise', 'gesQ1KP.png')
 loadSprite('unboxed', 'bdrLpi6.png')
@@ -47,28 +47,28 @@ scene("game", ({ level, score }) => {
 
   const maps = [
     [
-      '                                                                                     ',
-      '                                                                                     ',
-      '                                                                                     ',
-      '                                                                                     ',
-      '                                                                                     ',
-      '     %   =*=%=                                                                       ',
-      '                                                                                     ',
-      '                            -+                                                       ',
-      '                    ^   ^   ()                                                       ',
-      '==================================================================================',
+      '                                      ',
+      '                                      ',
+      '                                      ',
+      '                                      ',
+      '                                      ',
+      '     %   =*=%=                        ',
+      '                                      ',
+      '                            -+        ',
+      '                    ^   ^   ()        ',
+      '==============================   =====',
     ],
     [
-      '£                                                                                £',
-      '£                                                                                £',
-      '£                                                                                £',
-      '£                                                                                £',
-      '£                                                                                £',
-      '£        @@@@@@              x x                                                 £',
-      '£                          x x x                                                 £',
-      '£                        x x x x  x   -+                                         £',
-      '£               z   z  x x x x x  x   ()                                         £',
-      '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!',
+      '£                                       £',
+      '£                                       £',
+      '£                                       £',
+      '£                                       £',
+      '£                                       £',
+      '£        @@@@@@              x x        £',
+      '£                          x x x        £',
+      '£                        x x x x  x   -+£',
+      '£               z   z  x x x x x  x   ()£',
+      '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!',
     ]
   ]
 
@@ -142,7 +142,7 @@ scene("game", ({ level, score }) => {
     pos(30, 0),
     body(),
     big(),
-    origin('bot')
+      origin('bot'), scale(0.1)
   ])
 
   action('mushroom', (m) => {
@@ -214,13 +214,21 @@ scene("game", ({ level, score }) => {
       isJumping = false
     }
   })
+    document.getElementById("jump").addEventListener("click", jumpfunc);
+    document.getElementById("right").addEventListener("mousedown", rightfunc);
 
-  keyPress('space', () => {
-    if (player.grounded()) {
-      isJumping = true
-      player.jump(CURRENT_JUMP_FORCE)
+    function jumpfunc() {
+        if (player.grounded()) {
+            isJumping = true
+            player.jump(CURRENT_JUMP_FORCE)
+      }
     }
-  })
+
+    function rightfunc() {
+        player.move(MOVE_SPEED, 0)
+        rightfunc()
+    }
+
 })
 
 scene('lose', ({ score }) => {
