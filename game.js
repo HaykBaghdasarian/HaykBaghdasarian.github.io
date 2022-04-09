@@ -223,11 +223,11 @@ scene("game", ({ level, score }) => {
           player.move(-MOVE_SPEED, 0)
       }
   })
-    document.getElementById("jump").addEventListener("mousedown", jumpfunc);
-    document.getElementById("right").addEventListener("mousedown", rightfunc);
-    document.getElementById("right").addEventListener("mouseup", rightfunc1);
-    document.getElementById("left").addEventListener("mousedown", leftfunc);
-    document.getElementById("left").addEventListener("mouseup", leftfunc1);
+    document.getElementById("jump").addEventListener("touchstart", jumpfunc);
+    document.getElementById("right").addEventListener("touchstart", rightfunc);
+    document.getElementById("right").addEventListener("touchend", rightfunc1);
+    document.getElementById("left").addEventListener("touchstart", leftfunc);
+    document.getElementById("left").addEventListener("touchend", leftfunc1);
 
     function jumpfunc() {
         if (player.grounded()) {
