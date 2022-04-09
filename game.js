@@ -40,6 +40,7 @@ loadSprite('blue-steel', 'gqVoI2b.png')
 loadSprite('blue-evil-shroom', 'SvV4ueD.png')
 loadSprite('blue-surprise', 'RMqCc1G.png')
 
+var elem = document.getElementById("body");
 
 
 scene("game", ({ level, score }) => {
@@ -148,19 +149,18 @@ scene("game", ({ level, score }) => {
   action('mushroom', (m) => {
     m.move(20, 0)
   })
-
-  player.on("headbump", (obj) => {
-    if (obj.is('coin-surprise')) {
-      gameLevel.spawn('$', obj.gridPos.sub(0, 1))
-      destroy(obj)
-      gameLevel.spawn('}', obj.gridPos.sub(0,0))
-    }
-    if (obj.is('mushroom-surprise')) {
-      gameLevel.spawn('#', obj.gridPos.sub(0, 1))
-      destroy(obj)
-      gameLevel.spawn('}', obj.gridPos.sub(0,0))
-    }
-  })
+    player.on("headbump", (obj) => {
+        if (obj.is('coin-surprise')) {
+            gameLevel.spawn('$', obj.gridPos.sub(0, 1))
+            destroy(obj)
+            gameLevel.spawn('}', obj.gridPos.sub(0, 0))
+        }
+        if (obj.is('mushroom-surprise')) {
+            gameLevel.spawn('#', obj.gridPos.sub(0, 1))
+            destroy(obj)
+            gameLevel.spawn('}', obj.gridPos.sub(0, 0))
+        }
+    })
 
   player.collides('mushroom', (m) => {
     destroy(m)
@@ -169,13 +169,10 @@ scene("game", ({ level, score }) => {
 
   player.collides('coin', (c) => {
     destroy(c)
-    scoreLabel.value++
-      scoreLabel.text = scoreLabel.value
   })
 
     player.collides('blue-block', (b) => {
         window.open("https://haykbaghdasarian.github.io/hihi.html", "_self")
-
     })
 
   action('dangerous', (d) => {
@@ -197,27 +194,6 @@ scene("game", ({ level, score }) => {
     }
   })
 
-  player.collides('pipe', () => {
-    keyPress('down', () => {
-      go('game', {
-        level: (level + 1) % maps.length,
-        score: scoreLabel.value
-      })
-    })
-  })
-
-
-
-  keyDown('right', () => {
-    player.move(MOVE_SPEED, 0)
-  })
-    keyDown('space', () => {
-        isJumping = true
-        player.jump(CURRENT_JUMP_FORCE)
-    })
-    keyDown('left', () => {
-        player.move(-MOVE_SPEED, 0)
-    })
     var isright = false
     var isleft = false
 
@@ -259,10 +235,6 @@ scene("game", ({ level, score }) => {
         isleft = false
     }
 
-})
-
-scene('lose', ({ score }) => {
-  add([text(score, 32), origin('center'), pos(width()/2, height()/ 2)])
 })
 
 start("game", { level: 0, score: 0})
