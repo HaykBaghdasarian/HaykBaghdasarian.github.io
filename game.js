@@ -3,7 +3,7 @@
 kaboom({
   global: true,
   fullscreen: true,
-  scale: 4,
+  scale: 5,
   debug: true,
   clearColor: [0.3, 0.3, 0.4, 1],
 })
