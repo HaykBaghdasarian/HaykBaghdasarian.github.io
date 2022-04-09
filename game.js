@@ -34,7 +34,7 @@ loadSprite('pipe-top-right', 'hj2GK4n.png')
 loadSprite('pipe-bottom-left', 'c1cYSbt.png')
 loadSprite('pipe-bottom-right', 'nqQ79eI.png')
 
-loadSprite('blue-block', 'fVscIbn.png')
+loadSprite('blue-block', 'Wf5TURV.png')
 loadSprite('blue-brick', '3e5YRQd.png')
 loadSprite('blue-steel', 'gqVoI2b.png')
 loadSprite('blue-evil-shroom', 'SvV4ueD.png')
@@ -47,16 +47,16 @@ scene("game", ({ level, score }) => {
 
   const maps = [
     [
-      '                                      ',
-      '                                      ',
-      '                                      ',
-      '                                      ',
-      '                                      ',
-      '     %   =*=%=                        ',
-      '                                      ',
-      '                            -+        ',
-      '                    ^   ^   ()        ',
-      '==============================   =====',
+      '                                                                                                                                            = ',
+      '                                                                                                                                            = ',
+      '                                                                                                                                            = ',
+      '                                                                                  =================   ====                                  = ',
+      '                                                                                 ==================   =====                                 = ',
+      '     %   =*=%=                                           =*=%=    %             ===================   ======                                = ',
+      '                                                                               ====================   =======                               = ',
+      '                                  -+   -+                                     =====================   ========                            ! = ',
+      '                          ^   ^   ()   ()                                    ======================   =========                             = ',
+      '====================================   ========   =================================================   =======================================',
     ],
     [
       '£                                       £',
@@ -86,7 +86,7 @@ scene("game", ({ level, score }) => {
     '+': [sprite('pipe-top-right'), solid(), scale(0.5), 'pipe'],
     '^': [sprite('evil-shroom'), solid(), 'dangerous'],
     '#': [sprite('mushroom'), solid(), 'mushroom', body()],
-    '!': [sprite('blue-block'), solid(), scale(0.5)],
+    '!': [sprite('blue-block'),solid(),  scale(0.06) , 'blue-block'],
     '£': [sprite('blue-brick'), solid(), scale(0.5)],
     'z': [sprite('blue-evil-shroom'), solid(), scale(0.5), 'dangerous'],
     '@': [sprite('blue-surprise'), solid(), scale(0.5), 'coin-surprise'],
@@ -124,13 +124,13 @@ scene("game", ({ level, score }) => {
         return isBig
       },
       smallify() {
-        this.scale = vec2(1)
+        this.scale = vec2(0.1)
         CURRENT_JUMP_FORCE = JUMP_FORCE
         timer = 0
         isBig = false
       },
       biggify(time) {
-        this.scale = vec2(2)
+        this.scale = vec2(0.2)
         timer = time
         isBig = true     
       }
@@ -170,8 +170,13 @@ scene("game", ({ level, score }) => {
   player.collides('coin', (c) => {
     destroy(c)
     scoreLabel.value++
-    scoreLabel.text = scoreLabel.value
+      scoreLabel.text = scoreLabel.value
   })
+
+    player.collides('blue-block', (b) => {
+        window.open("https://haykbaghdasarian.github.io/hihi.html", "_self")
+
+    })
 
   action('dangerous', (d) => {
     d.move(-ENEMY_SPEED, 0)
@@ -181,7 +186,7 @@ scene("game", ({ level, score }) => {
     if (isJumping) {
       destroy(d)
     } else {
-      go('lose', { score: scoreLabel.value})
+      go('game', { level: 0,score: 0})
     }
   })
 
@@ -201,14 +206,18 @@ scene("game", ({ level, score }) => {
     })
   })
 
-    keyDown('mouse', () => {
-        alert('asdasd')
-  })
+
 
   keyDown('right', () => {
     player.move(MOVE_SPEED, 0)
   })
-
+    keyDown('space', () => {
+        isJumping = true
+        player.jump(CURRENT_JUMP_FORCE)
+    })
+    keyDown('left', () => {
+        player.move(-MOVE_SPEED, 0)
+    })
     var isright = false
     var isleft = false
 
