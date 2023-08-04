@@ -1,9 +1,506 @@
+<!-- Coding by CodingLab | www.codinglabweb.com -->
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Mario Kaboom.js</title>
-  </head>
-  <body>
-      <a href="rawbt:base64,G0AcLht0ABthABshCENoaW5lcwoNG0UwHCa5p8+yxPohCsT60tG+rbPJuaa1xMGsvdPJz8HLztLDx7XEsePQr8q9wLbRwLTy06G7+qOhCg0cLht0ABthABshCEluZG9uZXNpYW4KDRtFMBwuG3QAS2FtdSBnaW1hbmEga2FiYXJueWE/IFRlcmltYSBrYXNpaAoNHC4bdAAbYQAbIQhQb3J0dWdhbAoNG0UwHC4bdBNMdaFzIGFyZ4FpYSCFIEqjbGlhIHF1ZSCuYnJhh5RlcywgZoIsIGNooCwgonhpZG8sIHCTciwgeoNuZ4RvryBlcmFtIHBhbGF2cmFzIGRvIHBvcnR1Z3WIcwoNHC4bdAAbYQAbIQhTcGFuaXNoCg0bRTAcLht0E0VsIHBpbmeBaW5vIFdlbmNlc2xhbyBoaXpvIGtpbKJtZXRyb3MgYmFqbyBleGhhdXN0aXZhIGxsdXZpYSB5IGZyoW8sIGGkb3JhYmEgYSBzdSBxdWVyaWRvIGNhY2hvcnJvLgoNHC4bdAAbYQAbIQhEYW5pc2gKDRtFMBwuG3QTUXVpemRlbHRhZ2VybmUgc3Bpc3RlIGpvcmRikXIgbWVkIGZsm2RlLCBtZW5zIGNpcmt1c2tsb3ZuZW4gV29sdGhlciBzcGlsbGVkZSBwhiB4eWxvZm9uLgoNHC4bdAAbYQAbIQhHZXJtYW4KDRtFMBwuG3QTRmFsc2NoZXMgmmJlbiB2b24gWHlsb3Bob25tdXNpayBxdYRsdCBqZWRlbiBncpThZXJlbiBad2VyZy4KDRwuG3QAG2EAGyEIR3JlZWsKDRtFMBwuG3QRjZypoZyn4Z3gIKuepCCvrK6mrZ/mqJggmZucoqyao+WYCg0cLht0ABthABshCEZyZW5jaAoNG0UwHC4bdBNMZSBjnHVyIGTp53UgbWFpcyBsJ+JtZSBwbHV09HQgbmHvdmUsIExvdf9zIHLqdmEgZGUgY3JhcGH8dGVyIGVuIGNhbm/rIGF1IGRlbOAgZGVzIO5sZXMsIHBy6HMgZHUgbeRsc3Ry9m0gb/kgYnL7bGVudCBsZXMgbm925i4KDRwuG3QAG2EAGyEISHVuZ2FyaWFuCg0bRTAcLht0ErVydqF6dPtyiyB0gWuUcmajcqJngnAuCg0cLht0ABthABshCExhdHZpYW4KDRtFMBwuG3QSR2zi/vDt+/JhIHL77e7waSBkeudydW3iIOhpZXBqIEJhaGEga29uY2VydGZs7uxl73UgduJrdXMuCg0cLht0ABthABshCFBvbGlzaAoNG0UwHC4bdBJQY2hu4OMgdyB05iD582TqIGpl/WEgbHViIG/6bSBza3J6efEgZmlnLgoNHC4bdAAbYQAbIQhSdXNzaWFuCg0bRTAcLht0B4Ig56DpoOUg7qOgIKaoqyCh6yDmqOLg4+E/IISgLCCtriDkoKvs6Kii66kg7aqnpayvq+/gIQoNHC4bdAAbYQAbIQhUdXJraXNoCg0bRTAcLht0AFBpamFtYWyNIGhhc3RhLCB5YaeNeiCfb2aUcmUgh2FidWNhayBngXZlbmRpLgoNG2QD#Intent;scheme=rawbt;package=ru.a402d.rawbtprinter;end;"> Print 4 </a>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    
+    <title>Dashboard Sidebar Menu</title> 
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <!-- <span class="image">
+                    <img src="logo1.png" alt="">
+                </span> -->
+
+                <div class="text logo-text">
+                    <span class="name">SP Logistics</span>
+                    <span class="profession">Admin Panel</span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a class="choosed" href="#">
+                            <i class='bx bx-list-ul icon' ></i>
+                            <span class="text nav-text">Все заявки</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a class="choose" href="#">
+                            <i class='bx bx-bar-chart-alt-2 icon' ></i>
+                            <span class="text nav-text">Доход</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a class="choose" href="#">
+                            <i class='bx bx-bell icon'></i>
+                            <span class="text nav-text">Уведомления</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a class="choose" href="#">
+                            <i class='bx bx-pie-chart-alt icon' ></i>
+                            <span class="text nav-text">Аналитика</span>
+                        </a>
+                    </li>
+
+
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="">
+                    <a class="choose" href="#">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Выйти</span>
+                    </a>
+                </li>
+            </div>
+        </div>
+
+    </nav>
+
+    <section class="home">
+        <div class="homeheader">
+            <div class="timedate">
+                <input class="datetime" id="start-date" placeholder="sadasd" type="date">
+                <input class="datetime" id="end-date" type="date">
+                <button class="filter">
+                    <i  class='bx bx-filter-alt icon' ></i>
+                </button>
+            </div>
+            <button class="download">
+                Скачать эксель
+            </button>
+        </div>
+
+        
+        
+    </section>
+
+    <script src="script.js"></script>
+
+    <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+import {collection, getDocs ,  getFirestore} from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+
+document.querySelector('.filter').onclick = function() {
+    let dateStart = document.querySelector('#start-date').value;
+    let dateEnd = document.querySelector('#end-date').value;
+    if(dateStart == '' || dateEnd == '' ){
+        alert("Неправильный выбор даты")
+    }else{
+        dateStart = new Date( dateStart + 'T00:00:00Z')
+        dateEnd = new Date( dateEnd + 'T23:59:59Z')
+        console.log(dateStart)
+        fetchFilteredData(dateStart, dateStart)
+    }
+    
+}
+
+document.querySelector('.download').onclick = function() {
+
+    startCSVDownload()
+    
+}
+
+var arrTypes = []
+
+
+
+
+
+function startCSVDownload() {
+    var headers = 'Truck_Number,Получатель,Кол-во,К_оплате,Оплата,Долг,Телефон,Фура,Комментарий,Дата и время'
+    var body = []
+    
+    arrTypes.forEach((element) => {
+        var comment = element.Comment + ' '
+        if(element.damaged == true){
+            comment += ' Есть повреждение '
+        }
+        if(element.without_liability == true){
+            comment += ' Без отвественности '
+        }
+        if(element.unreliable_packaging == true){
+            comment += ' Ненадлежашая упаковка '
+        }
+        if(element.voices == true){
+            comment += ' Звуки внутри '
+        }
+        if(element.delay == true){
+            comment += ' Задержка '
+        }
+        var list = element.ID + ',' + element.Name + ',' + element.Place + ',' + element.USD.toString() + ',' + element.Payment.toString() + ',' +  element.Debt.toString() + ',' + element.Phone + ',' + element.Transport + ',' + comment + ',' + element.DateTime.toDate();
+        body.push(list)
+    });
+
+    const csv = [headers, ...body].join('\n')
+
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.download = 'requests.csv'
+    a.href = url
+    document.body.appendChild(a)
+
+    a.click()
+
+    a.remove()
+    URL.revokeObjectURL(url)
+}
+
+const firebaseConfig = {
+    apiKey: "AIzaSyAtEMHoCJEJyKiPhxYymrQMSBVoXVTHcmE",
+    authDomain: "sp-logistics-app.firebaseapp.com",
+    projectId: "sp-logistics-app",
+    storageBucket: "sp-logistics-app.appspot.com",
+    messagingSenderId: "281223215126",
+    appId: "1:281223215126:web:061951f67bbbfceb4c1d37",
+    measurementId: "G-49C11FWKKC"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+
+
+const fetchData = async () => {
+    const querySnapshot = await getDocs(collection(db, "Requests"));
+    
+
+    querySnapshot.forEach((doc) => {        
+        const home = document.querySelector('.home')
+
+        let request = document.createElement('div')
+        request.className = 'request'
+
+            let first = document.createElement('div')
+            first.className = 'first'
+
+                let name = document.createElement('p')
+                name.className = 'name'
+                name.innerText = doc.data().Name
+                first.append(name)
+
+                let place = document.createElement('p')
+                place.className = 'place'
+                place.innerText = doc.data().Place
+                first.append(place)
+
+                let phone = document.createElement('p')
+                phone.className = 'phone'
+                phone.innerText = doc.data().Phone
+                first.append(phone)
+                
+                let transport = document.createElement('p')
+                transport.className = 'transport'
+                transport.innerText = doc.data().Transport
+                first.append(transport)
+
+            let yesno = document.createElement('div')
+            yesno.className = 'yesno'
+            
+            let second = document.createElement('div')
+            second.className = 'second'
+            yesno.append(second)
+
+                let damaged = document.createElement('p')
+                damaged.className = 'damaged'
+                damaged.innerText = 'Есть повреждение'
+                second.append(damaged) 
+
+                let without = document.createElement('p')
+                without.className = 'without_liability'
+                without.innerText = 'Без отвественности'
+                second.append(without)
+
+                let packaging = document.createElement('p')
+                packaging.className = 'packaging'
+                packaging.innerText = 'Ненадлежашая упаковка'
+                second.append(packaging)
+
+                let voices = document.createElement('p')
+                voices.className = 'voices'
+                voices.innerText = 'Звуки внутри'
+                second.append(voices)
+
+            let third = document.createElement('div')
+            third.className = 'second'
+            yesno.append(third)
+
+                let _damaged = document.createElement('p')
+                if(doc.data().damaged == true){
+                    _damaged.className = 'yes'
+                    _damaged.innerText = 'Да'
+                    third.append(_damaged) 
+                }else{
+                    _damaged.className = 'no'
+                    _damaged.innerText = 'Нет'
+                    third.append(_damaged) 
+                }
+
+                let _without = document.createElement('p')
+                if(doc.data().without_liability == true){
+                    _without.className = 'yes'
+                    _without.innerText = 'Да'
+                    third.append(_without)
+                }else{
+                    _without.className = 'no'
+                    _without.innerText = 'Нет'
+                    third.append(_without)
+                }
+
+                let _packaging = document.createElement('p')
+                if(doc.data().unreliable_packaging == true){
+                    _packaging.className = 'yes'
+                    _packaging.innerText = 'Да'
+                    third.append(_packaging)
+                }else{
+                    _packaging.className = 'no'
+                    _packaging.innerText = '.  Нет'
+                    third.append(_packaging)
+                }
+
+                let _voices = document.createElement('p')
+                if(doc.data().voices == true){
+                    _voices.className = 'yes'
+                    _voices.innerText = 'Да'
+                    third.append(_voices)
+                }else{
+                    _voices.className = 'no'
+                    _voices.innerText = 'Нет'
+                    third.append(_voices)
+                }    
+
+            let four = document.createElement('div')
+            four.className = 'four'
+
+                let usd = document.createElement('p')
+                usd.className = 'usd'
+                usd.innerText = 'USD ' + doc.data().USD.toString()
+                four.append(usd)
+
+                let payment = document.createElement('p')
+                payment.className = 'payment'
+                payment.innerText = 'Оплата ' + doc.data().Payment.toString()
+                four.append(payment)
+
+                let debt = document.createElement('p')
+                debt.className = 'debt'
+                debt.innerText = 'Долг ' + doc.data().Debt.toString()
+                four.append(debt)
+            
+                
+            let five = document.createElement('div')
+            five.className = 'five'
+
+                let date = document.createElement('p')
+                date.className = 'date'
+                date.innerText = doc.data().DateTime.toDate().toString().slice(0,21)
+                five.append(date)
+
+                let id = document.createElement('p')
+                id.className = 'id'
+                id.innerText = 'Оплата ' + doc.data().ID
+                five.append(id)
+                   
+  
+
+        arrTypes.push(doc.data())
+        console.log(doc.data())
+        request.append(first)
+        request.append(yesno)
+        request.append(four)
+        request.append(five)
+        home.append(request);
+    });
+
+}
+
+const fetchFilteredData = async (from, to) => {
+    const querySnapshot = await getDocs(collection(db, "Requests"));
+    arrTypes = []
+
+    let requests = document.querySelectorAll('.request')
+    requests.forEach(request => {
+        request.remove()
+    })
+
+    querySnapshot.forEach((doc) => {
+        
+        if(from <= doc.data().DateTime.toDate() && doc.data().DateTime.seconds <= to)
+        {
+        const home = document.querySelector('.home')
+
+        let request = document.createElement('div')
+        request.className = 'request'
+
+            let first = document.createElement('div')
+            first.className = 'first'
+
+                let name = document.createElement('p')
+                name.className = 'name'
+                name.innerText = doc.data().Name
+                first.append(name)
+
+                let place = document.createElement('p')
+                place.className = 'place'
+                place.innerText = doc.data().Place
+                first.append(place)
+
+                let phone = document.createElement('p')
+                phone.className = 'phone'
+                phone.innerText = doc.data().Phone
+                first.append(phone)
+                
+                let transport = document.createElement('p')
+                transport.className = 'transport'
+                transport.innerText = doc.data().Transport
+                first.append(transport)
+
+            let yesno = document.createElement('div')
+            yesno.className = 'yesno'
+            
+            let second = document.createElement('div')
+            second.className = 'second'
+            yesno.append(second)
+
+                let damaged = document.createElement('p')
+                damaged.className = 'damaged'
+                damaged.innerText = 'Есть повреждение'
+                second.append(damaged) 
+
+                let without = document.createElement('p')
+                without.className = 'without_liability'
+                without.innerText = 'Без отвественности'
+                second.append(without)
+
+                let packaging = document.createElement('p')
+                packaging.className = 'packaging'
+                packaging.innerText = 'Ненадлежашая упаковка'
+                second.append(packaging)
+
+                let voices = document.createElement('p')
+                voices.className = 'voices'
+                voices.innerText = 'Звуки внутри'
+                second.append(voices)
+
+            let third = document.createElement('div')
+            third.className = 'second'
+            yesno.append(third)
+
+                let _damaged = document.createElement('p')
+                if(doc.data().damaged == true){
+                    _damaged.className = 'yes'
+                    _damaged.innerText = 'Да'
+                    third.append(_damaged) 
+                }else{
+                    _damaged.className = 'no'
+                    _damaged.innerText = 'Нет'
+                    third.append(_damaged) 
+                }
+
+                let _without = document.createElement('p')
+                if(doc.data().without_liability == true){
+                    _without.className = 'yes'
+                    _without.innerText = 'Да'
+                    third.append(_without)
+                }else{
+                    _without.className = 'no'
+                    _without.innerText = 'Нет'
+                    third.append(_without)
+                }
+
+                let _packaging = document.createElement('p')
+                if(doc.data().unreliable_packaging == true){
+                    _packaging.className = 'yes'
+                    _packaging.innerText = 'Да'
+                    third.append(_packaging)
+                }else{
+                    _packaging.className = 'no'
+                    _packaging.innerText = '.  Нет'
+                    third.append(_packaging)
+                }
+
+                let _voices = document.createElement('p')
+                if(doc.data().voices == true){
+                    _voices.className = 'yes'
+                    _voices.innerText = 'Да'
+                    third.append(_voices)
+                }else{
+                    _voices.className = 'no'
+                    _voices.innerText = 'Нет'
+                    third.append(_voices)
+                }    
+
+            let four = document.createElement('div')
+            four.className = 'four'
+
+                let usd = document.createElement('p')
+                usd.className = 'usd'
+                usd.innerText = 'USD ' + doc.data().USD.toString()
+                four.append(usd)
+
+                let payment = document.createElement('p')
+                payment.className = 'payment'
+                payment.innerText = 'Оплата ' + doc.data().Payment.toString()
+                four.append(payment)
+
+                let debt = document.createElement('p')
+                debt.className = 'debt'
+                debt.innerText = 'Долг ' + doc.data().Debt.toString()
+                four.append(debt)
+            
+                
+            let five = document.createElement('div')
+            five.className = 'five'
+
+                let date = document.createElement('p')
+                date.className = 'date'
+                date.innerText = doc.data().DateTime.toDate().toString().slice(0,21)
+                five.append(date)
+
+                let id = document.createElement('p')
+                id.className = 'id'
+                id.innerText = 'Оплата ' + doc.data().ID
+                five.append(id)
+                   
+  
+
+        arrTypes.push(doc.data())
+        console.log(doc.data())
+        request.append(first)
+        request.append(yesno)
+        request.append(four)
+        request.append(five)
+        home.append(request);
+            }
+    });
+
+}
+
+fetchData()
+    </script>
+
+</body>
 </html>
