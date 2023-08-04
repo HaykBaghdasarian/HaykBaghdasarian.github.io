@@ -397,7 +397,7 @@ body.dark .home .text{
 
 .request{
     background-color: white;
-    width: 95%;
+    width: 98%;
     border-radius: 10px;
     display: flex;
     flex-direction: row;
@@ -406,6 +406,7 @@ body.dark .home .text{
     box-shadow: 5px 5px 20px lightgray;
     margin-top: 2vh;
     padding: 2vh;
+    font-size: small;
 }
 
 .yes{
