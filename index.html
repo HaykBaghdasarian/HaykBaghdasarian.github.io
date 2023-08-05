@@ -111,8 +111,8 @@ document.querySelector('.filter').onclick = function() {
     }else{
         dateStart = new Date( dateStart + 'T00:00:00Z')
         dateEnd = new Date( dateEnd + 'T23:59:59Z')
-        console.log(dateStart)
-        fetchFilteredData(dateStart, dateStart)
+
+        fetchFilteredData(dateStart, dateEnd)
     }
     
 }
@@ -230,73 +230,35 @@ const fetchData = async () => {
             second.className = 'second'
             yesno.append(second)
 
-                let damaged = document.createElement('p')
-                damaged.className = 'damaged'
-                damaged.innerText = 'Есть повреждение'
-                second.append(damaged) 
-
-                let without = document.createElement('p')
-                without.className = 'without_liability'
-                without.innerText = 'Без отвественности'
-                second.append(without)
-
-                let packaging = document.createElement('p')
-                packaging.className = 'packaging'
-                packaging.innerText = 'Ненадлежашая упаковка'
-                second.append(packaging)
-
-                let voices = document.createElement('p')
-                voices.className = 'voices'
-                voices.innerText = 'Звуки внутри'
-                second.append(voices)
 
             let third = document.createElement('div')
             third.className = 'second'
             yesno.append(third)
 
-                let _damaged = document.createElement('p')
+                let comment = document.createElement('p')
+                comment.innerText = doc.Comment + ' ,'
                 if(doc.damaged == true){
-                    _damaged.className = 'yes'
-                    _damaged.innerText = 'Да'
-                    third.append(_damaged) 
-                }else{
-                    _damaged.className = 'no'
-                    _damaged.innerText = 'Нет'
-                    third.append(_damaged) 
+                    comment.innerText += ', Есть повреждение'
+                    third.append(comment) 
                 }
 
-                let _without = document.createElement('p')
+                
                 if(doc.without_liability == true){
-                    _without.className = 'yes'
-                    _without.innerText = 'Да'
-                    third.append(_without)
-                }else{
-                    _without.className = 'no'
-                    _without.innerText = 'Нет'
-                    third.append(_without)
+                    comment.innerText += ', Без отвественности'
+                    third.append(comment)
                 }
 
-                let _packaging = document.createElement('p')
+                
                 if(doc.unreliable_packaging == true){
-                    _packaging.className = 'yes'
-                    _packaging.innerText = 'Да'
-                    third.append(_packaging)
-                }else{
-                    _packaging.className = 'no'
-                    _packaging.innerText = '.  Нет'
-                    third.append(_packaging)
+                    comment.innerText += ', Ненадлежашая упаковка'
+                    third.append(comment)
                 }
 
-                let _voices = document.createElement('p')
+     
                 if(doc.voices == true){
-                    _voices.className = 'yes'
-                    _voices.innerText = 'Да'
-                    third.append(_voices)
-                }else{
-                    _voices.className = 'no'
-                    _voices.innerText = 'Нет'
-                    third.append(_voices)
-                }    
+                    comment.innerText += ', Звуки внутри'
+                    third.append(comment)
+                }  
 
             let four = document.createElement('div')
             four.className = 'four'
@@ -340,16 +302,23 @@ const fetchData = async () => {
 }
 
 const fetchFilteredData = async (from, to) => {
-    const querySnapshot = await getDocs(collection(db, "Requests"));
+
     arrTypes = []
+
 
     let requests = document.querySelectorAll('.request')
     requests.forEach(request => {
         request.remove()
     })
 
+    const querySnapshot = await getDocs(collection(db, "Requests"));
+    
     querySnapshot.forEach((doc) => {        
-        arrTypes.push(doc.data())
+        if(from <= doc.data().DateTime.toDate() && to >= doc.data().DateTime.toDate()){
+            arrTypes.push(doc.data())
+        }
+
+       
     });
 
     arrTypes = arrTypes.sort((a, b) => b.DateTime - a.DateTime)
@@ -357,144 +326,106 @@ const fetchFilteredData = async (from, to) => {
     arrTypes.forEach((doc) => {
         const home = document.querySelector('.home')
 
-        let request = document.createElement('div')
-        request.className = 'request'
+let request = document.createElement('div')
+request.className = 'request'
 
-            let first = document.createElement('div')
-            first.className = 'first'
+    let first = document.createElement('div')
+    first.className = 'first'
 
-                let name = document.createElement('p')
-                name.className = 'name'
-                name.innerText = doc.Name
-                first.append(name)
+        let name = document.createElement('p')
+        name.className = 'name'
+        name.innerText = doc.Name
+        first.append(name)
 
-                let place = document.createElement('p')
-                place.className = 'place'
-                place.innerText = doc.Place
-                first.append(place)
+        let place = document.createElement('p')
+        place.className = 'place'
+        place.innerText = doc.Place
+        first.append(place)
 
-                let phone = document.createElement('p')
-                phone.className = 'phone'
-                phone.innerText = doc.Phone
-                first.append(phone)
-                
-                let transport = document.createElement('p')
-                transport.className = 'transport'
-                transport.innerText = doc.Transport
-                first.append(transport)
+        let phone = document.createElement('p')
+        phone.className = 'phone'
+        phone.innerText = doc.Phone
+        first.append(phone)
+        
+        let transport = document.createElement('p')
+        transport.className = 'transport'
+        transport.innerText = doc.Transport
+        first.append(transport)
 
-            let yesno = document.createElement('div')
-            yesno.className = 'yesno'
-            
-            let second = document.createElement('div')
-            second.className = 'second'
-            yesno.append(second)
+    let yesno = document.createElement('div')
+    yesno.className = 'yesno'
+    
+    let second = document.createElement('div')
+    second.className = 'second'
+    yesno.append(second)
 
-                let damaged = document.createElement('p')
-                damaged.className = 'damaged'
-                damaged.innerText = 'Есть повреждение'
-                second.append(damaged) 
 
-                let without = document.createElement('p')
-                without.className = 'without_liability'
-                without.innerText = 'Без отвественности'
-                second.append(without)
+    let third = document.createElement('div')
+    third.className = 'second'
+    yesno.append(third)
 
-                let packaging = document.createElement('p')
-                packaging.className = 'packaging'
-                packaging.innerText = 'Ненадлежашая упаковка'
-                second.append(packaging)
+        let comment = document.createElement('p')
+        comment.innerText = doc.Comment + ' ,'
+        if(doc.damaged == true){
+            comment.innerText += ', Есть повреждение'
+            third.append(comment) 
+        }
 
-                let voices = document.createElement('p')
-                voices.className = 'voices'
-                voices.innerText = 'Звуки внутри'
-                second.append(voices)
+        
+        if(doc.without_liability == true){
+            comment.innerText += ', Без отвественности'
+            third.append(comment)
+        }
 
-            let third = document.createElement('div')
-            third.className = 'second'
-            yesno.append(third)
+        
+        if(doc.unreliable_packaging == true){
+            comment.innerText += ', Ненадлежашая упаковка'
+            third.append(comment)
+        }
 
-                let _damaged = document.createElement('p')
-                if(doc.damaged == true){
-                    _damaged.className = 'yes'
-                    _damaged.innerText = 'Да'
-                    third.append(_damaged) 
-                }else{
-                    _damaged.className = 'no'
-                    _damaged.innerText = 'Нет'
-                    third.append(_damaged) 
-                }
 
-                let _without = document.createElement('p')
-                if(doc.without_liability == true){
-                    _without.className = 'yes'
-                    _without.innerText = 'Да'
-                    third.append(_without)
-                }else{
-                    _without.className = 'no'
-                    _without.innerText = 'Нет'
-                    third.append(_without)
-                }
+        if(doc.voices == true){
+            comment.innerText += ', Звуки внутри'
+            third.append(comment)
+        }  
 
-                let _packaging = document.createElement('p')
-                if(doc.unreliable_packaging == true){
-                    _packaging.className = 'yes'
-                    _packaging.innerText = 'Да'
-                    third.append(_packaging)
-                }else{
-                    _packaging.className = 'no'
-                    _packaging.innerText = '.  Нет'
-                    third.append(_packaging)
-                }
+    let four = document.createElement('div')
+    four.className = 'four'
 
-                let _voices = document.createElement('p')
-                if(doc.voices == true){
-                    _voices.className = 'yes'
-                    _voices.innerText = 'Да'
-                    third.append(_voices)
-                }else{
-                    _voices.className = 'no'
-                    _voices.innerText = 'Нет'
-                    third.append(_voices)
-                }    
+        let usd = document.createElement('p')
+        usd.className = 'usd'
+        usd.innerText = 'USD ' + doc.USD.toString()
+        four.append(usd)
 
-            let four = document.createElement('div')
-            four.className = 'four'
+        let payment = document.createElement('p')
+        payment.className = 'payment'
+        payment.innerText = 'Оплата ' + doc.Payment.toString()
+        four.append(payment)
 
-                let usd = document.createElement('p')
-                usd.className = 'usd'
-                usd.innerText = 'USD ' + doc.USD.toString()
-                four.append(usd)
+        let debt = document.createElement('p')
+        debt.className = 'debt'
+        debt.innerText = 'Долг ' + doc.Debt.toString()
+        four.append(debt)
+    
+        
+    let five = document.createElement('div')
+    five.className = 'five'
 
-                let payment = document.createElement('p')
-                payment.className = 'payment'
-                payment.innerText = 'Оплата ' + doc.Payment.toString()
-                four.append(payment)
+        let date = document.createElement('p')
+        date.className = 'date'
+        date.innerText = doc.DateTime.toDate().toString().slice(0,21)
+        five.append(date)
 
-                let debt = document.createElement('p')
-                debt.className = 'debt'
-                debt.innerText = 'Долг ' + doc.Debt.toString()
-                four.append(debt)
-            
-                
-            let five = document.createElement('div')
-            five.className = 'five'
-
-                let date = document.createElement('p')
-                date.className = 'date'
-                date.innerText = doc.DateTime.toDate().toString().slice(0,21)
-                five.append(date)
-
-                let id = document.createElement('p')
-                id.className = 'id'
-                id.innerText = doc.ID
-                five.append(id)
-                
-        request.append(first)
-        request.append(yesno)
-        request.append(four)
-        request.append(five)
-        home.append(request);
+        let id = document.createElement('p')
+        id.className = 'id'
+        id.innerText = doc.ID
+        five.append(id)
+        
+request.append(first)
+request.append(yesno)
+request.append(four)
+request.append(five)
+home.append(request);
     })
 
     
