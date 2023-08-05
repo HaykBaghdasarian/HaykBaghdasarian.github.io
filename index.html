@@ -12,7 +12,7 @@
     <!----===== Boxicons CSS ===== -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     
-    <title>Dashboard Sidebar Menu</title> 
+    <title>LP Logistics</title> 
 </head>
 <body>
     <nav class="sidebar close">
@@ -189,6 +189,12 @@ const fetchData = async () => {
     
 
     querySnapshot.forEach((doc) => {        
+        arrTypes.push(doc.data())
+    });
+
+    arrTypes = arrTypes.sort((a, b) => b.DateTime - a.DateTime)
+
+    arrTypes.forEach((doc) => {
         const home = document.querySelector('.home')
 
         let request = document.createElement('div')
@@ -199,22 +205,22 @@ const fetchData = async () => {
 
                 let name = document.createElement('p')
                 name.className = 'name'
-                name.innerText = doc.data().Name
+                name.innerText = doc.Name
                 first.append(name)
 
                 let place = document.createElement('p')
                 place.className = 'place'
-                place.innerText = doc.data().Place
+                place.innerText = doc.Place
                 first.append(place)
 
                 let phone = document.createElement('p')
                 phone.className = 'phone'
-                phone.innerText = doc.data().Phone
+                phone.innerText = doc.Phone
                 first.append(phone)
                 
                 let transport = document.createElement('p')
                 transport.className = 'transport'
-                transport.innerText = doc.data().Transport
+                transport.innerText = doc.Transport
                 first.append(transport)
 
             let yesno = document.createElement('div')
@@ -249,7 +255,7 @@ const fetchData = async () => {
             yesno.append(third)
 
                 let _damaged = document.createElement('p')
-                if(doc.data().damaged == true){
+                if(doc.damaged == true){
                     _damaged.className = 'yes'
                     _damaged.innerText = 'Да'
                     third.append(_damaged) 
@@ -260,7 +266,7 @@ const fetchData = async () => {
                 }
 
                 let _without = document.createElement('p')
-                if(doc.data().without_liability == true){
+                if(doc.without_liability == true){
                     _without.className = 'yes'
                     _without.innerText = 'Да'
                     third.append(_without)
@@ -271,7 +277,7 @@ const fetchData = async () => {
                 }
 
                 let _packaging = document.createElement('p')
-                if(doc.data().unreliable_packaging == true){
+                if(doc.unreliable_packaging == true){
                     _packaging.className = 'yes'
                     _packaging.innerText = 'Да'
                     third.append(_packaging)
@@ -282,7 +288,7 @@ const fetchData = async () => {
                 }
 
                 let _voices = document.createElement('p')
-                if(doc.data().voices == true){
+                if(doc.voices == true){
                     _voices.className = 'yes'
                     _voices.innerText = 'Да'
                     third.append(_voices)
@@ -297,17 +303,17 @@ const fetchData = async () => {
 
                 let usd = document.createElement('p')
                 usd.className = 'usd'
-                usd.innerText = 'USD ' + doc.data().USD.toString()
+                usd.innerText = 'USD ' + doc.USD.toString()
                 four.append(usd)
 
                 let payment = document.createElement('p')
                 payment.className = 'payment'
-                payment.innerText = 'Оплата ' + doc.data().Payment.toString()
+                payment.innerText = 'Оплата ' + doc.Payment.toString()
                 four.append(payment)
 
                 let debt = document.createElement('p')
                 debt.className = 'debt'
-                debt.innerText = 'Долг ' + doc.data().Debt.toString()
+                debt.innerText = 'Долг ' + doc.Debt.toString()
                 four.append(debt)
             
                 
@@ -316,24 +322,20 @@ const fetchData = async () => {
 
                 let date = document.createElement('p')
                 date.className = 'date'
-                date.innerText = doc.data().DateTime.toDate().toString().slice(0,21)
+                date.innerText = doc.DateTime.toDate().toString().slice(0,21)
                 five.append(date)
 
                 let id = document.createElement('p')
                 id.className = 'id'
-                id.innerText = 'Оплата ' + doc.data().ID
+                id.innerText = doc.ID
                 five.append(id)
-                   
-  
-
-        arrTypes.push(doc.data())
-        console.log(doc.data())
+                
         request.append(first)
         request.append(yesno)
         request.append(four)
         request.append(five)
         home.append(request);
-    });
+    })
 
 }
 
@@ -346,10 +348,13 @@ const fetchFilteredData = async (from, to) => {
         request.remove()
     })
 
-    querySnapshot.forEach((doc) => {
-        
-        if(from <= doc.data().DateTime.toDate() && doc.data().DateTime.seconds <= to)
-        {
+    querySnapshot.forEach((doc) => {        
+        arrTypes.push(doc.data())
+    });
+
+    arrTypes = arrTypes.sort((a, b) => b.DateTime - a.DateTime)
+
+    arrTypes.forEach((doc) => {
         const home = document.querySelector('.home')
 
         let request = document.createElement('div')
@@ -360,22 +365,22 @@ const fetchFilteredData = async (from, to) => {
 
                 let name = document.createElement('p')
                 name.className = 'name'
-                name.innerText = doc.data().Name
+                name.innerText = doc.Name
                 first.append(name)
 
                 let place = document.createElement('p')
                 place.className = 'place'
-                place.innerText = doc.data().Place
+                place.innerText = doc.Place
                 first.append(place)
 
                 let phone = document.createElement('p')
                 phone.className = 'phone'
-                phone.innerText = doc.data().Phone
+                phone.innerText = doc.Phone
                 first.append(phone)
                 
                 let transport = document.createElement('p')
                 transport.className = 'transport'
-                transport.innerText = doc.data().Transport
+                transport.innerText = doc.Transport
                 first.append(transport)
 
             let yesno = document.createElement('div')
@@ -410,7 +415,7 @@ const fetchFilteredData = async (from, to) => {
             yesno.append(third)
 
                 let _damaged = document.createElement('p')
-                if(doc.data().damaged == true){
+                if(doc.damaged == true){
                     _damaged.className = 'yes'
                     _damaged.innerText = 'Да'
                     third.append(_damaged) 
@@ -421,7 +426,7 @@ const fetchFilteredData = async (from, to) => {
                 }
 
                 let _without = document.createElement('p')
-                if(doc.data().without_liability == true){
+                if(doc.without_liability == true){
                     _without.className = 'yes'
                     _without.innerText = 'Да'
                     third.append(_without)
@@ -432,7 +437,7 @@ const fetchFilteredData = async (from, to) => {
                 }
 
                 let _packaging = document.createElement('p')
-                if(doc.data().unreliable_packaging == true){
+                if(doc.unreliable_packaging == true){
                     _packaging.className = 'yes'
                     _packaging.innerText = 'Да'
                     third.append(_packaging)
@@ -443,7 +448,7 @@ const fetchFilteredData = async (from, to) => {
                 }
 
                 let _voices = document.createElement('p')
-                if(doc.data().voices == true){
+                if(doc.voices == true){
                     _voices.className = 'yes'
                     _voices.innerText = 'Да'
                     third.append(_voices)
@@ -458,17 +463,17 @@ const fetchFilteredData = async (from, to) => {
 
                 let usd = document.createElement('p')
                 usd.className = 'usd'
-                usd.innerText = 'USD ' + doc.data().USD.toString()
+                usd.innerText = 'USD ' + doc.USD.toString()
                 four.append(usd)
 
                 let payment = document.createElement('p')
                 payment.className = 'payment'
-                payment.innerText = 'Оплата ' + doc.data().Payment.toString()
+                payment.innerText = 'Оплата ' + doc.Payment.toString()
                 four.append(payment)
 
                 let debt = document.createElement('p')
                 debt.className = 'debt'
-                debt.innerText = 'Долг ' + doc.data().Debt.toString()
+                debt.innerText = 'Долг ' + doc.Debt.toString()
                 four.append(debt)
             
                 
@@ -477,25 +482,22 @@ const fetchFilteredData = async (from, to) => {
 
                 let date = document.createElement('p')
                 date.className = 'date'
-                date.innerText = doc.data().DateTime.toDate().toString().slice(0,21)
+                date.innerText = doc.DateTime.toDate().toString().slice(0,21)
                 five.append(date)
 
                 let id = document.createElement('p')
                 id.className = 'id'
-                id.innerText = 'Оплата ' + doc.data().ID
+                id.innerText = doc.ID
                 five.append(id)
-                   
-  
-
-        arrTypes.push(doc.data())
-        console.log(doc.data())
+                
         request.append(first)
         request.append(yesno)
         request.append(four)
         request.append(five)
         home.append(request);
-            }
-    });
+    })
+
+    
 
 }
 
