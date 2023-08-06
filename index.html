@@ -96,6 +96,11 @@
                 Скачать эксель
             </button>
         </div>
+        <div class="payinfo">
+            <p id="USD">К оплате:</p>
+            <p id="Payment">Оплачено:</p>
+            <p id="Debt">Долг:</p>
+        </div>
 
         
         
@@ -137,7 +142,7 @@ document.querySelector('.download').onclick = function() {
 }
 
 var arrTypes = []
-
+var payinfo = [0,0,0]
 
 
 
@@ -199,7 +204,7 @@ const db = getFirestore(app);
 
 const fetchData = async () => {
     const querySnapshot = await getDocs(collection(db, "Requests"));
-    
+    payinfo = [0,0,0]
 
     querySnapshot.forEach((doc) => {        
         arrTypes.push(doc.data())
@@ -208,6 +213,9 @@ const fetchData = async () => {
     arrTypes = arrTypes.sort((a, b) => b.DateTime - a.DateTime)
 
     arrTypes.forEach((doc) => {
+        payinfo[0] += doc.USD
+        payinfo[1] += doc.Payment 
+        payinfo[2] += doc.Debt
         const home = document.querySelector('.home')
 
         let request = document.createElement('div')
@@ -312,12 +320,20 @@ const fetchData = async () => {
         home.append(request);
     })
 
+    const usd = document.querySelector('#USD')
+    const payment = document.querySelector('#Payment')
+    const debt = document.querySelector('#Debt')
+
+    usd.innerText = "К оплате: " + payinfo[0].toString()
+    payment.innerText = "Оплачено: " + payinfo[1].toString()
+    debt.innerText = "Долг: " + payinfo[2].toString()
+
 }
 
 const fetchFilteredData = async (from, to, type) => {
 
     arrTypes = []
-
+    payinfo = [0,0,0]
 
     let requests = document.querySelectorAll('.request')
     requests.forEach(request => {
@@ -338,6 +354,9 @@ const fetchFilteredData = async (from, to, type) => {
     arrTypes = arrTypes.sort((a, b) => b.DateTime - a.DateTime)
 
     arrTypes.forEach((doc) => {
+        payinfo[0] += doc.USD
+        payinfo[1] += doc.Payment 
+        payinfo[2] += doc.Debt
         const home = document.querySelector('.home')
 
 let request = document.createElement('div')
@@ -420,6 +439,8 @@ request.className = 'request'
         debt.className = 'debt'
         debt.innerText = 'Долг ' + doc.Debt.toString()
         four.append(debt)
+
+        
     
         
     let five = document.createElement('div')
@@ -434,17 +455,27 @@ request.className = 'request'
         id.className = 'id'
         id.innerText = doc.ID
         five.append(id)
-        
-request.append(first)
-request.append(yesno)
-request.append(four)
-request.append(five)
-home.append(request);
+        request.append(first)
+        request.append(yesno)
+        request.append(four)
+        request.append(five)
+        home.append(request);
+
     })
+
+    const usd = document.querySelector('#USD')
+    const payment = document.querySelector('#Payment')
+    const debt = document.querySelector('#Debt')
+
+    usd.innerText = "К оплате: " + payinfo[0].toString()
+    payment.innerText = "Оплачено: " + payinfo[1].toString()
+    debt.innerText = "Долг: " + payinfo[2].toString()
 
     
 
 }
+
+
 
 fetchData()
     </script>

@@ -352,6 +352,15 @@ body{
     margin-right: 2vh;
 }
 
+.payinfo{
+    background-color: white;
+    padding: 2vh;
+    box-shadow: 5px 5px 20px lightgray;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
 .filter{
     background: rgb(103,178,112);
     background: linear-gradient(180deg, rgba(103,178,112,1) 0%, rgba(76,162,204,1) 100%);
