@@ -1,4 +1,3 @@
-<!-- Coding by CodingLab | www.codinglabweb.com -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,6 +83,11 @@
             <div class="timedate">
                 <input class="datetime" id="start-date" placeholder="sadasd" type="date">
                 <input class="datetime" id="end-date" type="date">
+                <select class="select" name="Type" id="Type">
+                    <option value="all">Все</option>
+                    <option value="Z">Барыс</option>
+                    <option value="S">Адем</option>
+                  </select>
                 <button class="filter">
                     <i  class='bx bx-filter-alt icon' ></i>
                 </button>
@@ -106,21 +110,30 @@ import {collection, getDocs ,  getFirestore} from "https://www.gstatic.com/fireb
 document.querySelector('.filter').onclick = function() {
     let dateStart = document.querySelector('#start-date').value;
     let dateEnd = document.querySelector('#end-date').value;
-    if(dateStart == '' || dateEnd == '' ){
-        alert("Неправильный выбор даты")
+    const sb = document.querySelector('.select')
+    if(dateStart == ''){
+        dateStart = new Date( '2000-08-01T00:00:00Z')
     }else{
         dateStart = new Date( dateStart + 'T00:00:00Z')
-        dateEnd = new Date( dateEnd + 'T23:59:59Z')
-
-        fetchFilteredData(dateStart, dateEnd)
     }
+    if(dateEnd == ''){
+        dateEnd = new Date()
+    }else{
+        dateEnd = new Date( dateEnd + 'T23:59:59Z')
+    }
+    
+
+    fetchFilteredData(dateStart, dateEnd, sb.value)
+    
+    
+
     
 }
 
 document.querySelector('.download').onclick = function() {
 
     startCSVDownload()
-    
+
 }
 
 var arrTypes = []
@@ -301,7 +314,7 @@ const fetchData = async () => {
 
 }
 
-const fetchFilteredData = async (from, to) => {
+const fetchFilteredData = async (from, to, type) => {
 
     arrTypes = []
 
@@ -314,7 +327,8 @@ const fetchFilteredData = async (from, to) => {
     const querySnapshot = await getDocs(collection(db, "Requests"));
     
     querySnapshot.forEach((doc) => {        
-        if(from <= doc.data().DateTime.toDate() && to >= doc.data().DateTime.toDate()){
+        if(from <= doc.data().DateTime.toDate() && to >= doc.data().DateTime.toDate() || from == to == null){
+        if(type == doc.data().ID[0] || type == 'all')
             arrTypes.push(doc.data())
         }
 

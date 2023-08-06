@@ -344,6 +344,14 @@ body{
     align-items: center;
 }
 
+.select{
+    height: 100%;
+    border-radius: 10px;
+    border-width: 0px;
+    box-shadow: 5px 5px 20px lightgray;
+    margin-right: 2vh;
+}
+
 .filter{
     background: rgb(103,178,112);
     background: linear-gradient(180deg, rgba(103,178,112,1) 0%, rgba(76,162,204,1) 100%);
