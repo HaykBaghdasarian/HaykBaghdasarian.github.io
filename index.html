@@ -161,7 +161,6 @@ var payinfo = [0,0,0]
 
 
 function startCSVDownload() {
-    var headers = 'Truck_Number,Получатель,Кол-во,К_оплате,Оплата,Долг,Телефон,Фура,Комментарий,Дата и время'
     var body = []
     
     arrTypes.forEach((element) => {
@@ -180,8 +179,10 @@ function startCSVDownload() {
         }
         if(element.delay == true){
             comment += ' Задержка '
+        }if(element.wet == true){
+            comment += ' Мокрый '
         }
-        var list = {"Track_number" : element.ID,  "Получатель" : element.Name,  "Кол-во" : element.Place,  "К_оплате" : element.USD.toString(),  "Оплата" : element.Payment.toString(),  "Долг" : element.Debt.toString(),  "Телефон" : element.Phone,  "Фура" : element.Transport,  "Комментарий" : comment,  "Дата" : element.DateTime.toDate() }
+        var list = {"Track_number" : element.ID,  "Получатель" : element.Name,  "Кол-во" : element.Place,  "К_оплате" : element.USD.toString(),  "Оплата" : element.Payment.toString(),  "Долг" : element.Debt.toString(),  "Телефон" : element.Phone,  "Фура" : element.Transport,  "Комментарий" : comment,  "Дата" : element.DateTime.toDate(), "Время" : element.ID.slice(9,11) + ":" + element.ID.slice(11,13)  }
         body.push(list)
     });
 
@@ -281,6 +282,11 @@ const fetchData = async () => {
      
                 if(doc.voices == true){
                     comment.innerText += ', Звуки внутри'
+                    third.append(comment)
+                }  
+
+                if(doc.wet == true){
+                    comment.innerText += ', Мокрый'
                     third.append(comment)
                 }  
 
@@ -424,6 +430,11 @@ request.className = 'request'
             comment.innerText += ', Звуки внутри'
             third.append(comment)
         }  
+
+        if(doc.wet == true){
+            comment.innerText += ', Мокрый'
+            third.append(comment)
+        } 
 
     let four = document.createElement('div')
     four.className = 'four'
