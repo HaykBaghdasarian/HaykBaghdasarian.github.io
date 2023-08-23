@@ -11,7 +11,7 @@
     <!----===== Boxicons CSS ===== -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     
-    <title>LP Logistics</title> 
+    <title>Lora Andrey</title> 
 </head>
 <body>
     <nav class="sidebar close">
@@ -22,7 +22,7 @@
                 </span> -->
 
                 <div class="text logo-text">
-                    <span class="name">SP Logistics</span>
+                    <span class="name">Lora Andrey</span>
                     <span class="profession">Admin Panel</span>
                 </div>
             </div>
@@ -182,7 +182,7 @@ function startCSVDownload() {
         }if(element.wet == true){
             comment += ' Мокрый '
         }
-        var list = {"Track_number" : element.ID,  "Получатель" : element.Name,  "Кол-во" : element.Place,  "К_оплате" : element.USD.toString(),  "Оплата" : element.Payment.toString(),  "Долг" : element.Debt.toString(),  "Телефон" : element.Phone,  "Фура" : element.Transport,  "Комментарий" : comment,  "Дата" : element.DateTime.toDate(), "Время" : element.ID.slice(9,11) + ":" + element.ID.slice(11,13)  }
+        var list = {"Track_number" : element.ID,  "Получатель" : element.Name,  "Кол-во" : element.Place,  "К_оплате" : element.USD.toString(),  "Оплата" : element.Payment.toString(),  "Долг" : element.Debt.toString(),  "Телефон" : element.Phone,  "Фура" : element.Transport,  "Комментарий" : comment,  "Дата" : element.DateTime.toDate(), "Время" : element.DateTime.toDate().getHours().toString() + ':' + element.DateTime.toDate().getMinutes().toString() }
         body.push(list)
     });
 
