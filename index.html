@@ -164,6 +164,7 @@ function startCSVDownload() {
     var body = []
     
     arrTypes.forEach((element) => {
+        var phone = ''
         var comment = element.Comment + ' '
         if(element.damaged == true){
             comment += ' Есть повреждение '
@@ -182,7 +183,10 @@ function startCSVDownload() {
         }if(element.wet == true){
             comment += ' Мокрый '
         }
-        var list = {"Track_number" : element.ID,  "Получатель" : element.Name,  "Кол-во" : element.Place,  "К_оплате" : element.USD.toString(),  "Оплата" : element.Payment.toString(),  "Долг" : element.Debt.toString(),  "Телефон" : element.Phone,  "Фура" : element.Transport,  "Комментарий" : comment,  "Дата" : element.DateTime.toDate(), "Время" : element.DateTime.toDate().getHours().toString() + ':' + element.DateTime.toDate().getMinutes().toString() }
+        if(element.Phone.length > 2){
+            phone = element.Phone.slice(1,16)
+        }
+        var list = {"Track_number" : element.ID,  "Получатель" : element.Name,  "Кол-во" : element.Place,  "К_оплате" : element.USD.toString(),  "Оплата" : element.Payment.toString(),  "Долг" : element.Debt.toString(),  "Телефон" : phone,  "Фура" : element.Transport,  "Комментарий" : comment,  "Дата" : element.DateTime.toDate(), "Время" : element.DateTime.toDate().getHours().toString() + ':' + element.DateTime.toDate().getMinutes().toString() }
         body.push(list)
     });
 
