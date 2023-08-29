@@ -30,6 +30,39 @@
             <i class='bx bx-chevron-right toggle'></i>
         </header>
 
+        <div class="edit-panel">
+            <div>
+                <p>Получатель</p>
+                <input type="text" id="fname" name="fname">
+                <p>Мест</p>
+                <input type="text" id="fplace" name="fplace">
+                <p>Телефон</p>
+                <input type="text" id="fphone" name="fphone">
+                <p>Номер машины</p>
+                <input type="text" id="ftransport" name="ftransport">
+                <p>Комментарий</p>
+                <input type="text" id="fcomment" name="fcomment"> <br>
+                <label>Есть повреждение </label><input type="checkbox" id="fdamaged" name="fdamaged"><br>
+                <label>Без отвественности </label><input type="checkbox" id="fwithout" name="fwithout"><br>
+                <label>Ненадлежашая упаковка </label><input type="checkbox" id="funreliable" name="funreliable"><br>
+                <label>Звуки внутри </label><input type="checkbox" id="fvoices" name="fvoices"><br>
+                <label>Задержка </label><input type="checkbox" id="fdelay" name="fdelay"><br>
+                <label>Мокрая </label><input type="checkbox" id="fwet" name="fwet"><br>
+                <p>К оплате</p>
+                <input type="text" id="fpayment" name="fpayment"> <br>
+                <p>Оплачено</p>
+                <input type="text" id="fusd" name="fusd"> <br>
+                <p>Долг</p>
+                <input type="text" id="fdebt" name="fdebt" > <br>
+                <button id="edit">
+                    <p>Редактировать</p>
+                </button>
+                <button class="closepanel">
+                    <p>Отмена</p>
+                </button>
+            </div>
+        </div>
+
         <div class="menu-bar">
             <div class="menu">
 
@@ -101,6 +134,24 @@
             <p id="Payment">Оплачено:</p>
             <p id="Debt">Долг:</p>
         </div>
+        <div style="width:calc(100% - 20px);overflow-x:auto; background-color: rgb(247, 247, 247);">
+            <table id="table">
+              <tr>
+                <th>Track_number</th>
+                <th>Получатель</th>
+                <th>Кол-во</th>
+                <th>К оплате</th>
+                <th>Оплачено</th>
+                <th>Долг</th>
+                <th>Телефон</th>
+                <th>Фура</th>
+                <th>Комментарий</th>
+                <th>Дата</th>
+                <th>Время</th>
+              </tr>
+            
+            </table>
+          </div>
 
         
         
@@ -108,6 +159,7 @@
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.1/xlsx.full.min.js"></script> 
 <script>
+
     function ExportData(data)
     {
         filename='reports.xlsx';
@@ -123,24 +175,36 @@
 
     <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
-import {collection, getDocs ,  getFirestore} from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+import {collection, getDocs ,  getFirestore, updateDoc, doc} from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+
+
+var from = new Date()
+var to = new Date()
+from = new Date( from.toLocaleDateString('en-CA') + 'T00:00:00Z')
+to = new Date( to.toLocaleDateString('en-CA') + 'T23:59:59Z')
 
 document.querySelector('.filter').onclick = function() {
     let dateStart = document.querySelector('#start-date').value;
     let dateEnd = document.querySelector('#end-date').value;
+
+    console.log(dateStart)
     const sb = document.querySelector('.select')
     if(dateStart == ''){
         dateStart = new Date( '2000-08-01T00:00:00Z')
+        from = dateStart
     }else{
         dateStart = new Date( dateStart + 'T00:00:00Z')
+        from = dateStart
     }
     if(dateEnd == ''){
         dateEnd = new Date()
+        to = dateEnd
     }else{
         dateEnd = new Date( dateEnd + 'T23:59:59Z')
+        to = dateEnd
     }
     
-    fetchFilteredData(dateStart, dateEnd, sb.value)
+    fetchFilteredDataNew(dateStart, dateEnd, sb.value)
     
 }
 
@@ -152,9 +216,6 @@ document.querySelector('.download').onclick = function() {
 
 var arrTypes = []
 var payinfo = [0,0,0]
-
-
-
 
 function startCSVDownload() {
     var body = []
@@ -204,297 +265,150 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-
-
-const fetchData = async () => {
-    const querySnapshot = await getDocs(collection(db, "Requests"));
-    payinfo = [0,0,0]
-
-    querySnapshot.forEach((doc) => {        
-        arrTypes.push(doc.data())
+const edit = async(ID) => {
+    await updateDoc(doc(db, "Requests", ID), {
+        Name: document.querySelector('#fname').value,
+        Place: document.querySelector('#fplace').value,
+        Phone: document.querySelector('#fphone').value,
+        Transport: document.querySelector('#ftransport').value,
+        Comment: document.querySelector('#fcomment').value,
+        damaged: document.querySelector('#fdamaged').checked,
+        without_liability: document.querySelector('#fwithout').checked,
+        unreliable_packaging: document.querySelector('#funreliable').checked,
+        voices: document.querySelector('#fvoices').checked,
+        delay: document.querySelector('#fwet').checked,
+        wet: document.querySelector('#fwet').checked,
+        Payment: parseInt(document.querySelector('#fpayment').value),
+        USD: parseInt(document.querySelector('#fusd').value),
+        Debt: parseInt(document.querySelector('#fdebt').value)
     });
-
-    arrTypes = arrTypes.sort((a, b) => b.DateTime - a.DateTime)
-
-    arrTypes.forEach((doc) => {
-        payinfo[0] += doc.USD
-        payinfo[1] += doc.Payment 
-        payinfo[2] += doc.Debt
-        const home = document.querySelector('.home')
-
-        let request = document.createElement('div')
-        request.className = 'request'
-
-            let first = document.createElement('div')
-            first.className = 'first'
-
-                let name = document.createElement('p')
-                name.className = 'name'
-                name.innerText = doc.Name
-                first.append(name)
-
-                let place = document.createElement('p')
-                place.className = 'place'
-                place.innerText = doc.Place
-                first.append(place)
-
-                let phone = document.createElement('p')
-                phone.className = 'phone'
-                phone.innerText = doc.Phone
-                first.append(phone)
-                
-                let transport = document.createElement('p')
-                transport.className = 'transport'
-                transport.innerText = doc.Transport
-                first.append(transport)
-
-            let yesno = document.createElement('div')
-            yesno.className = 'yesno'
-            
-            let second = document.createElement('div')
-            second.className = 'second'
-            yesno.append(second)
-
-
-            let third = document.createElement('div')
-            third.className = 'second'
-            yesno.append(third)
-
-                let comment = document.createElement('p')
-                comment.innerText = doc.Comment + ' ,'
-                if(doc.damaged == true){
-                    comment.innerText += ', Есть повреждение'
-                    third.append(comment) 
-                }
-
-                
-                if(doc.without_liability == true){
-                    comment.innerText += ', Без отвественности'
-                    third.append(comment)
-                }
-
-                
-                if(doc.unreliable_packaging == true){
-                    comment.innerText += ', Ненадлежашая упаковка'
-                    third.append(comment)
-                }
-
-     
-                if(doc.voices == true){
-                    comment.innerText += ', Звуки внутри'
-                    third.append(comment)
-                }  
-
-                if(doc.wet == true){
-                    comment.innerText += ', Мокрый'
-                    third.append(comment)
-                }  
-
-            let four = document.createElement('div')
-            four.className = 'four'
-
-                let usd = document.createElement('p')
-                usd.className = 'usd'
-                usd.innerText = 'USD ' + doc.USD.toString()
-                four.append(usd)
-
-                let payment = document.createElement('p')
-                payment.className = 'payment'
-                payment.innerText = 'Оплата ' + doc.Payment.toString()
-                four.append(payment)
-
-                let debt = document.createElement('p')
-                debt.className = 'debt'
-                debt.innerText = 'Долг ' + doc.Debt.toString()
-                four.append(debt)
-            
-                
-            let five = document.createElement('div')
-            five.className = 'five'
-
-                let date = document.createElement('p')
-                date.className = 'date'
-                date.innerText = doc.DateTime.toDate().toString().slice(0,21)
-                five.append(date)
-
-                let id = document.createElement('p')
-                id.className = 'id'
-                id.innerText = doc.ID
-                five.append(id)
-                
-        request.append(first)
-        request.append(yesno)
-        request.append(four)
-        request.append(five)
-        home.append(request);
-    })
-
-    const usd = document.querySelector('#USD')
-    const payment = document.querySelector('#Payment')
-    const debt = document.querySelector('#Debt')
-
-    usd.innerText = "К оплате: " + payinfo[0].toString()
-    payment.innerText = "Оплачено: " + payinfo[1].toString()
-    debt.innerText = "Долг: " + payinfo[2].toString()
-
+    closeeditpanel()
+    fetchFilteredDataNew(from,to,document.querySelector('.select').value)
 }
 
-const fetchFilteredData = async (from, to, type) => {
 
-    arrTypes = []
-    payinfo = [0,0,0]
+const openeditpanel = (name, place, phone, transport, comment, damaged, without_liability, unreliable_packaging, voices, delay, wet, payment, usd, debt, ID) => {
+    var panel = document.querySelector('.edit-panel')
+    document.querySelector('#fname').value = name
+    document.querySelector('#fplace').value = place
+    document.querySelector('#fphone').value = phone
+    document.querySelector('#ftransport').value = transport
+    document.querySelector('#fcomment').value = comment
+    document.querySelector('#fdamaged').checked = damaged
+    document.querySelector('#fwithout').checked = without_liability
+    document.querySelector('#funreliable').checked = unreliable_packaging
+    document.querySelector('#fvoices').checked = voices
+    document.querySelector('#fdelay').checked = delay
+    document.querySelector('#fwet').checked = wet
+    document.querySelector('#fpayment').value = payment
+    document.querySelector('#fusd').value = usd
+    document.querySelector('#fdebt').value = debt
+    panel.style.display = "flex";
+    document.querySelector('#edit').onclick = function(){edit(ID)}
+}
 
-    let requests = document.querySelectorAll('.request')
-    requests.forEach(request => {
-        request.remove()
+
+const closeeditpanel = () => {
+    var panel = document.querySelector('.edit-panel')
+    panel.style.display = "none";
+}
+
+document.querySelector('.closepanel').addEventListener('click',closeeditpanel)
+
+
+const fetchFilteredDataNew = async (from, to, type) => { 
+
+arrTypes = []
+payinfo = [0,0,0]
+
+let requests = document.querySelectorAll('.request')
+requests.forEach(request => {
+    request.remove()
+})
+
+const querySnapshot = await getDocs(collection(db, "Requests"));
+
+querySnapshot.forEach((doc) => {  
+    if(from <= doc.data().DateTime.toDate() && to >= doc.data().DateTime.toDate() || from == to == null){
+    if(type == doc.data().ID[0] || type == 'all')
+        console.log(doc.id)
+        var x = doc.data()
+
+        x.parentid = doc.id
+
+        console.log(x)
+        arrTypes.push(x)
+    }
+});
+
+arrTypes = arrTypes.sort((a, b) => b.DateTime - a.DateTime)
+var table = document.querySelector('#table')
+
+arrTypes.forEach((doc) => {
+
+    var comment = doc.Comment + ' '
+
+if(doc.damaged == true){
+    comment += ' Есть повреждение '
+}
+if(doc.without_liability == true){
+    comment += ' Без отвественности '
+}
+if(doc.unreliable_packaging == true){
+    comment += ' Ненадлежашая упаковка '
+}
+if(doc.voices == true){
+    comment += ' Звуки внутри '
+}
+if(doc.delay == true){
+    comment += ' Задержка '
+}if(doc.wet == true){
+    comment += ' Мокрый '
+}  
+
+    var ar = [doc.ID, doc.Name, doc.Place, doc.Payment, doc.USD, doc.Debt, doc.Phone, doc.Transport, comment, doc.DateTime.toDate().toLocaleDateString('en-CA') + ",", doc.DateTime.toDate().getHours().toString() + ':' + doc.DateTime.toDate().getMinutes().toString()]
+    var tr = document.createElement('tr')
+    tr.className = 'request'
+    ar.forEach((text) => {
+        var td = document.createElement('td')
+        td.innerText = text
+        tr.append(td)
     })
-
-    const querySnapshot = await getDocs(collection(db, "Requests"));
-    
-    querySnapshot.forEach((doc) => {        
-        if(from <= doc.data().DateTime.toDate() && to >= doc.data().DateTime.toDate() || from == to == null){
-        if(type == doc.data().ID[0] || type == 'all')
-            arrTypes.push(doc.data())
-        }
-
-       
-    });
-
-    arrTypes = arrTypes.sort((a, b) => b.DateTime - a.DateTime)
-
-    arrTypes.forEach((doc) => {
-        payinfo[0] += doc.USD
-        payinfo[1] += doc.Payment 
-        payinfo[2] += doc.Debt
-        const home = document.querySelector('.home')
-
-let request = document.createElement('div')
-request.className = 'request'
-
-    let first = document.createElement('div')
-    first.className = 'first'
-
-        let name = document.createElement('p')
-        name.className = 'name'
-        name.innerText = doc.Name
-        first.append(name)
-
-        let place = document.createElement('p')
-        place.className = 'place'
-        place.innerText = doc.Place
-        first.append(place)
-
-        let phone = document.createElement('p')
-        phone.className = 'phone'
-        phone.innerText = doc.Phone
-        first.append(phone)
-        
-        let transport = document.createElement('p')
-        transport.className = 'transport'
-        transport.innerText = doc.Transport
-        first.append(transport)
-
-    let yesno = document.createElement('div')
-    yesno.className = 'yesno'
-    
-    let second = document.createElement('div')
-    second.className = 'second'
-    yesno.append(second)
+    var td = document.createElement('td')
+    var button = document.createElement('button')
+    button.innerText = 'ред.'
+    button.onclick = function(){openeditpanel(doc.Name, doc.Place, doc.Phone, doc.Transport, doc.Comment, doc.damaged, doc.without_liability, doc.unreliable_packaging, doc.voices, doc.delay, doc.wet, doc.Payment, doc.USD, doc.Debt , doc.parentid
+)};
+    td.append(button)
+    tr.append(td)
+    table.append(tr)
+    payinfo[0] += doc.USD
+    payinfo[1] += doc.Payment 
+    payinfo[2] += doc.Debt
+    const home = document.querySelector('.home')
+})
 
 
-    let third = document.createElement('div')
-    third.className = 'second'
-    yesno.append(third)
 
-        let comment = document.createElement('p')
-        comment.innerText = doc.Comment + ' ,'
-        if(doc.damaged == true){
-            comment.innerText += ', Есть повреждение'
-            third.append(comment) 
-        }
+const usd = document.querySelector('#USD')
+const payment = document.querySelector('#Payment')
+const debt = document.querySelector('#Debt')
 
-        
-        if(doc.without_liability == true){
-            comment.innerText += ', Без отвественности'
-            third.append(comment)
-        }
-
-        
-        if(doc.unreliable_packaging == true){
-            comment.innerText += ', Ненадлежашая упаковка'
-            third.append(comment)
-        }
+usd.innerText = "К оплате: " + payinfo[0].toString()
+payment.innerText = "Оплачено: " + payinfo[1].toString()
+debt.innerText = "Долг: " + payinfo[2].toString()
 
 
-        if(doc.voices == true){
-            comment.innerText += ', Звуки внутри'
-            third.append(comment)
-        }  
-
-        if(doc.wet == true){
-            comment.innerText += ', Мокрый'
-            third.append(comment)
-        } 
-
-    let four = document.createElement('div')
-    four.className = 'four'
-
-        let usd = document.createElement('p')
-        usd.className = 'usd'
-        usd.innerText = 'USD ' + doc.USD.toString()
-        four.append(usd)
-
-        let payment = document.createElement('p')
-        payment.className = 'payment'
-        payment.innerText = 'Оплата ' + doc.Payment.toString()
-        four.append(payment)
-
-        let debt = document.createElement('p')
-        debt.className = 'debt'
-        debt.innerText = 'Долг ' + doc.Debt.toString()
-        four.append(debt)
-
-        
-    
-        
-    let five = document.createElement('div')
-    five.className = 'five'
-
-        let date = document.createElement('p')
-        date.className = 'date'
-        date.innerText = doc.DateTime.toDate().toString().slice(0,21)
-        five.append(date)
-
-        let id = document.createElement('p')
-        id.className = 'id'
-        id.innerText = doc.ID
-        five.append(id)
-        request.append(first)
-        request.append(yesno)
-        request.append(four)
-        request.append(five)
-        home.append(request);
-
-    })
-
-    const usd = document.querySelector('#USD')
-    const payment = document.querySelector('#Payment')
-    const debt = document.querySelector('#Debt')
-
-    usd.innerText = "К оплате: " + payinfo[0].toString()
-    payment.innerText = "Оплачено: " + payinfo[1].toString()
-    debt.innerText = "Долг: " + payinfo[2].toString()
-
-    
 
 }
 var today = new Date();
-var s = today.setHours(0,0,0,0)
-var e = today.setHours(59,59,59,99)
-document.querySelector('#start-date').value = today.toLocaleDateString('en-CA')
-document.querySelector('#end-date').value = today.toLocaleDateString('en-CA')
-console.log(today)
-fetchFilteredData(s, e, 'all')
+var a = today.toLocaleDateString('en-CA')
+document.querySelector('#start-date').value = a
+document.querySelector('#end-date').value = a
+
+var s = new Date( a + 'T00:00:00Z')
+var e = new Date( a + 'T23:59:59Z')
+fetchFilteredDataNew(s, e, 'all')
     </script>
 
 </body>

@@ -353,6 +353,7 @@ body{
 }
 
 .payinfo{
+    z-index: 50;
     background-color: white;
     padding: 2vh;
     box-shadow: 5px 5px 20px lightgray;
@@ -412,19 +413,6 @@ body.dark .home .text{
     color: var(--text-color);
 }
 
-.request{
-    background-color: white;
-    width: 98%;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 5px 5px 20px lightgray;
-    margin-top: 2vh;
-    padding: 2vh;
-    font-size: small;
-}
 
 .yes{
     color: #64B078;
@@ -436,6 +424,9 @@ body.dark .home .text{
     text-align: right;
 }
 
+th{
+    text-align: left;
+}
 
 .name{
     font-weight: bold;
@@ -452,4 +443,18 @@ body.dark .home .text{
     display: flex;
     flex-direction: column;
     text-align: right;
+}
+
+
+.edit-panel{
+    background-color: white;
+    z-index: 110;
+    position: absolute;
+    box-shadow: 5px 5px 20px lightgray;
+    padding: 5vh;
+    align-self: center;
+    display: none;
+    justify-content: center;
+    border-radius: 20px;
+    overflow:auto;
 }
