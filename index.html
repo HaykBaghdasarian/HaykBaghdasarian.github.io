@@ -81,7 +81,7 @@
     <section class="home">
         <div class="homeheader">
             <div class="timedate">
-                <input class="datetime" id="start-date" placeholder="sadasd" type="date">
+                <input class="datetime" id="start-date" type="date">
                 <input class="datetime" id="end-date" type="date">
                 <select class="select" name="Type" id="Type">
                     <option value="all">Все</option>
@@ -140,11 +140,7 @@ document.querySelector('.filter').onclick = function() {
         dateEnd = new Date( dateEnd + 'T23:59:59Z')
     }
     
-
     fetchFilteredData(dateStart, dateEnd, sb.value)
-    
-    
-
     
 }
 
@@ -492,10 +488,13 @@ request.className = 'request'
     
 
 }
-
-
-
-fetchData()
+var today = new Date();
+var s = today.setHours(0,0,0,0)
+var e = today.setHours(59,59,59,99)
+document.querySelector('#start-date').value = today.toLocaleDateString('en-CA')
+document.querySelector('#end-date').value = today.toLocaleDateString('en-CA')
+console.log(today)
+fetchFilteredData(s, e, 'all')
     </script>
 
 </body>
