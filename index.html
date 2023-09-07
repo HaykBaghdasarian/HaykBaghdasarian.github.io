@@ -177,6 +177,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 import {collection, getDocs ,  getFirestore, updateDoc, doc} from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 
+let arrTypes = []
+let payinfo = [0,0,0]
 
 var from = new Date()
 var to = new Date()
@@ -203,7 +205,7 @@ document.querySelector('.filter').onclick = function() {
         dateEnd = new Date( dateEnd + 'T23:59:59Z')
         to = dateEnd
     }
-    
+    arrTypes = []
     fetchFilteredDataNew(dateStart, dateEnd, sb.value)
     
 }
@@ -214,8 +216,7 @@ document.querySelector('.download').onclick = function() {
 
 }
 
-var arrTypes = []
-var payinfo = [0,0,0]
+
 
 function startCSVDownload() {
     var body = []
@@ -283,6 +284,7 @@ const edit = async(ID) => {
         Debt: parseInt(document.querySelector('#fdebt').value)
     });
     closeeditpanel()
+    arrTypes = []
     fetchFilteredDataNew(from,to,document.querySelector('.select').value)
 }
 
@@ -318,29 +320,31 @@ document.querySelector('.closepanel').addEventListener('click',closeeditpanel)
 
 const fetchFilteredDataNew = async (from, to, type) => { 
 
-arrTypes = []
-payinfo = [0,0,0]
 
+
+payinfo = [0,0,0]
+console.log(type)
 let requests = document.querySelectorAll('.request')
 requests.forEach(request => {
     request.remove()
 })
 
 const querySnapshot = await getDocs(collection(db, "Requests"));
-
+arrTypes=[]
 querySnapshot.forEach((doc) => {  
     if(from <= doc.data().DateTime.toDate() && to >= doc.data().DateTime.toDate() || from == to == null){
-    if(type == doc.data().ID[0] || type == 'all')
-        console.log(doc.id)
+    if(type == doc.data().ID[0] || type == 'all'){
+        console.log(doc.data().ID[0])
         var x = doc.data()
 
         x.parentid = doc.id
 
-        console.log(x)
         arrTypes.push(x)
+    }
     }
 });
 
+console.log(arrTypes)
 arrTypes = arrTypes.sort((a, b) => b.DateTime - a.DateTime)
 var table = document.querySelector('#table')
 
