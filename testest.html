@@ -5,10 +5,14 @@
 </head>
 
 <body>
-    <button id="btn" >Test 2</button>
+    <button id="play" >PLay</button>
+    <button id="stop" >Stop</button>
     <script type="module">
-        document.getElementById('btn').addEventListener("click", function() {
-          ReactNativeWebView.postMessage('{"Title": "Между девятин (Истома)", "URL":"https://ftp1.puper.one/files/music/source/176d5480c98301c62298d4530b863e4c.mp3", "TrackId":"1352", "Artist":"@TurTKuL_CluB_BaSs", "Artwork":"https://ftp1.puper.one/files/music/screen/176d5480c98301c62298d4530b863e4c.jpg"}');
+        document.getElementById('play').addEventListener("click", function() {
+          ReactNativeWebView.postMessage('{"Title": "Между девятин (Истома)", "URL":"https://ftp1.puper.one/files/music/source/176d5480c98301c62298d4530b863e4c.mp3", "TrackId":"1352", "Artist":"@TurTKuL_CluB_BaSs", "Artwork":"https://ftp1.puper.one/files/music/screen/176d5480c98301c62298d4530b863e4c.jpg", "Type": "Play"}');
+        });
+        document.getElementById('stop').addEventListener("click", function() {
+          ReactNativeWebView.postMessage('{"Title": "Между девятин (Истома)", "URL":"https://ftp1.puper.one/files/music/source/176d5480c98301c62298d4530b863e4c.mp3", "TrackId":"1352", "Artist":"@TurTKuL_CluB_BaSs", "Artwork":"https://ftp1.puper.one/files/music/screen/176d5480c98301c62298d4530b863e4c.jpg", "Type": "Stop"}');
         });
       </script>
 </body>
