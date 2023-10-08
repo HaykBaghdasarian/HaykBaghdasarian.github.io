@@ -7,20 +7,19 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
   <script src="./epub.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <style type="text/css">
-
+    body{
+      padding: 0;
+      margin: 0
+    }
     #viewer {
       height: 100%;
       width: 100%;
-      background: white;
+
     }
-
-
   </style>
-  
-
 </head>
+
 <body>
   <div id="viewer"></div>
 
@@ -36,21 +35,10 @@
       flow: "paginated",
       width: "100%",
       height: '100vh',
-      snap: true,
-      
+      snap: true
     });
 
     rendition.display(currentSectionIndex)
-
-    rendition.on("rendered", function(section){
-      $('p').click(function(){
-        var sel=window.getSelection();
-        var str=sel.anchorNode.nodeValue,len=str.length, a=b=sel.anchorOffset;
-        while(str[a]!=' '&&a--){}; if (str[a]==' ') a++; // start of word
-        while(str[b]!=' '&&b++<len){};                   // end of word+1
-        console.log(str.substring(a,b));
-      });
-    })
 
     rendition.hooks.content.register(function(contents, view) {
 
