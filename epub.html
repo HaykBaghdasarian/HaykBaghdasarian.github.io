@@ -42,7 +42,11 @@
     rendition.themes.register("dark", "themes.css");
     rendition.themes.register("light", "themes.css");
 
+    var theme = "dark"
+
     rendition.themes.select('dark')
+
+    var exword ;
 
     rendition.display(currentSectionIndex)
 
@@ -54,12 +58,26 @@
         items.forEach(function(item){
           item.innerHTML = item.innerText.split(' ').map(l => `<span>${l}</span>`).join(' ');
           item.addEventListener("click", function(e){
+            if(e.target.textContent.split(' ').length < 2){
               console.log(e.target.textContent)
+              unmark()
+              exword = e.target
+              exword.style.color = "#A952D1"
+            }
           })
       });
       })
-      
     })
+
+    function unmark(){
+      if(exword){
+        if(theme == "dark"){
+          exword.style.color = 'rgba(255, 255, 255, 0.7)'
+        }else{
+          exword.style.color = '#0A1B39'
+        }
+      }
+    }
 
     document.addEventListener("keyup", function(e){
       if ((e.keyCode || e.which) == 37) {
@@ -69,13 +87,16 @@
     }}, false);
 
     document.addEventListener("message", function(data) {
-      alert("1- " + data.data)
-      rendition.next();
-      this.rendition.themes.default({
-      'body': {
-        'color': 'white',
+      if(data.data == "dark"){
+        rendition.themes.select("dark")
       }
-    });
+      if(data.data == "light"){
+        rendition.themes.select("light")
+      }
+      if(data.data == "unmark"){
+        unmark()
+      }
+  
     });
     
   </script>
