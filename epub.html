@@ -50,7 +50,7 @@
         item.innerHTML = item.innerText.split(' ').map(l => `<span>${l}</span>`).join(' ');
         item.addEventListener("click", function(e){
             alert(e.target.innerText)
-            ReactNativeWebView.postMessage('{"word": "' + e.target.innerText + '"}')
+            // ReactNativeWebView.postMessage('{"word": "' + e.target.innerText + '"}')
         })
       });
 
