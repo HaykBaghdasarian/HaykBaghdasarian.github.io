@@ -41,6 +41,18 @@
 
     rendition.display(5)
 
+    displayed.then(function(renderer){
+      var elements = document.querySelectorAll('p');
+      var items = Array.prototype.slice.call(elements);
+
+      items.forEach(function(item){
+        item.innerHTML = item.innerText.split(' ').map(l => `<span>${l}</span>`).join(' ');
+        item.addEventListener("click", function(e){
+            ReactNativeWebView.postMessage('{"word": "' + e.target.textContent + '"}')
+        })
+      });
+    }
+
     rendition.hooks.content.register(function(contents, view) {
 
       var elements = contents.document.querySelectorAll('p');
@@ -49,25 +61,11 @@
       items.forEach(function(item){
         item.innerHTML = item.innerText.split(' ').map(l => `<span>${l}</span>`).join(' ');
         item.addEventListener("click", function(e){
-            alert(e.target.textContent)
-            // ReactNativeWebView.postMessage('{"word": "' + e.target.textContent + '"}')
+            ReactNativeWebView.postMessage('{"word": "' + e.target.textContent + '"}')
         })
       });
 
     })
-
-    document.addEventListener('DOMContentLoaded', function () {
-      var elements = document.querySelectorAll('p');
-      var items = Array.prototype.slice.call(elements);
-
-      items.forEach(function(item){
-        item.innerHTML = item.innerText.split(' ').map(l => `<span>${l}</span>`).join(' ');
-        item.addEventListener("click", function(e){
-            alert(e.target.textContent)
-            // ReactNativeWebView.postMessage('{"word": "' + e.target.textContent + '"}')
-        })
-      });
-    });
 
     document.addEventListener("keyup", function(e){
       if ((e.keyCode || e.which) == 37) {
