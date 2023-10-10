@@ -32,11 +32,9 @@
 
     var book = ePub(url || "https://s3.amazonaws.com/moby-dick/moby-dick.epub");
     var rendition = book.renderTo("viewer", {
-      manager: "continuous",
-      flow: "paginated",
+      flow: "scrolled-doc",
       width: "100%",
-      height: '100vh',
-      snap: true
+      fullsize: true
     });
 
     rendition.display(5)
