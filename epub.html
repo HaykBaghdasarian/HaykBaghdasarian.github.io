@@ -32,25 +32,33 @@
 
     var book = ePub(url || "https://s3.amazonaws.com/moby-dick/moby-dick.epub");
     var rendition = book.renderTo("viewer", {
-      flow: "scrolled-doc",
+      manager: "continuous",
+      flow: "paginated",
       width: "100%",
-      fullsize: true
+      height: "100vh",
+      snap: true
     });
 
-    rendition.display(5)
-    
-    rendition.hooks.content.register(function(contents, view) {
+    rendition.themes.register("dark", "themes.css");
+    rendition.themes.register("light", "themes.css");
 
-      var elements = contents.document.querySelectorAll('p');
-      var items = Array.prototype.slice.call(elements);
+    rendition.themes.select('dark')
 
-      items.forEach(function(item){
-        item.innerHTML = item.innerText.split(' ').map(l => `<span>${l}</span>`).join(' ');
-        item.addEventListener("click", function(e){
-            ReactNativeWebView.postMessage('{"word": "' + e.target.textContent + '"}')
-        })
+    rendition.display(currentSectionIndex)
+
+    rendition.on("rendered", function(section){
+      var elements = document.querySelectorAll('iframe');
+      elements.forEach(function(element){
+        var p = element.contentDocument.body.querySelectorAll('p')
+        var items = Array.prototype.slice.call(p);
+        items.forEach(function(item){
+          item.innerHTML = item.innerText.split(' ').map(l => `<span>${l}</span>`).join(' ');
+          item.addEventListener("click", function(e){
+              console.log(e.target.textContent)
+          })
       });
-
+      })
+      
     })
 
     document.addEventListener("keyup", function(e){
