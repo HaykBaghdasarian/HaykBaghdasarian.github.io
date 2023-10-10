@@ -68,8 +68,19 @@
       }
     });
 
+     this.rendition.themes.default({
+      'body': {
+        'color': 'black',
+      }
+    });
+
     document.addEventListener("message", function(data) {
       alert(data)
+      this.rendition.themes.default({
+      'body': {
+        'color': 'white',
+      }
+    });
     });
     
   </script>
