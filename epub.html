@@ -48,7 +48,7 @@
 
       items.forEach(function(item){
         item.innerHTML = item.innerText.split(' ').map(l => `<span>${l}</span>`).join(' ');
-        item.addEventListener("click", e => {
+        item.addEventListener("touchstart", e => {
             alert(e.target.innerText)
             ReactNativeWebView.postMessage('{"word": "' + e.target.innerText + '"}')
         })
