@@ -51,7 +51,6 @@
     rendition.display(5)
 
     rendition.on("rendered", function(section){
-      alert("rendered")
       var elements = document.querySelectorAll('iframe');
       elements.forEach(function(element){
         var p = element.contentDocument.body.querySelectorAll('p')
